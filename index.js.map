@@ -1,1 +1,1 @@
-{"version":3,"file":"index.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"index.js","sources":["../src/js/render-function.js"],"sourcesContent":["// Функції для відображення елементів інтерфейсу.\n\nimport Accordion from \"accordion-js\";\nimport \"accordion-js/dist/accordion.min.css\";\n\n\nnew Accordion('.accordion-container', {\n  duration: 300,\n  showMultiple: false,\n});"],"names":["Accordion"],"mappings":"svBAMA,IAAIA,EAAU,uBAAwB,CACpC,SAAU,IACV,aAAc,EAChB,CAAC"}
