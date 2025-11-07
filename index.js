@@ -1,31 +1,31 @@
-import{A as p,a as i}from"./assets/vendor-xD2YBz4L.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&s(n)}).observe(document,{childList:!0,subtree:!0});function c(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=c(e);fetch(e.href,r)}})();const f="https://furniture-store-v2.b.goit.study/api",l={FURNITURES:"/furnitures/",CATEGORIES:"/categories"},a=1,u=8,d={categories:document.querySelector("#categories"),products:document.querySelector("#products"),modal:document.querySelector(".modal"),modalProduct:document.querySelector(".modal-product"),loadMoreBtn:document.querySelector(".load-more-btn"),loader:document.querySelector(".loader")};function g(o){const t=[{_id:"all",name:"Всі товари"},...o];console.log(t);const c=t.map(({_id:s,name:e})=>`<li
-        class="category-item"
+import{A as y,a as l}from"./assets/vendor-xD2YBz4L.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&t(i)}).observe(document,{childList:!0,subtree:!0});function c(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function t(e){if(e.ep)return;e.ep=!0;const s=c(e);fetch(e.href,s)}})();const n={categories:document.querySelector("#categories"),products:document.querySelector("#products"),modal:document.querySelector(".modal"),modalProduct:document.querySelector(".modal-product"),loadMoreBtn:document.querySelector(".load-more-btn"),loader:document.querySelector(".loader")};function h(r){const c=[{_id:"all",name:"Всі товари"},...r].map(({_id:t,name:e})=>`<li
+        class="category-item" id="${t}"
         style="
           background-image: image-set(
-            url('/img/furniture/${s}.png') 1x,
-            url('/img/furniture/${s}@2x.png') 2x
+            url('/img/furniture/${t}.png') 1x,
+            url('/img/furniture/${t}@2x.png') 2x
           );
         "
       >
         ${e}
-      </li>`).join("");d.categories.innerHTML=c}function m(o){const t=o.map(({_id:c,name:s,images:e,price:r,color:n})=>`<li class="product-item">
+      </li>`).join("");n.categories.innerHTML=c}function u(r){const o=r.map(({_id:c,name:t,images:e,price:s,color:i})=>`<li class="product-item">
         <img
           class="products-image"
           src='${e[0]}'
-          alt="${s}"
+          alt="${t}"
         />
         <div class="product-description-box">
-          <h4 class="products-title">${s}</h4>
+          <h4 class="products-title">${t}</h4>
           <ul class="products-color-list">
-            <li class="products-color-box" style="background-color: ${n[0]}"></li>
-            <li class="products-color-box" style="background-color: ${n[1]}"></li>
+            <li class="products-color-box" style="background-color: ${i[0]}"></li>
+            <li class="products-color-box" style="background-color: ${i[1]}"></li>
             <li
               class="products-color-box"
-              style="background-color: ${n[2]}"
+              style="background-color: ${i[2]}"
             ></li>
           </ul>
-          <p class="products-price">${r} грн</p>
+          <p class="products-price">${s} грн</p>
         </div>
         <button class="products-details-btn" type="button">Детальніше</button>
-      </li>`).join("");d.products.insertAdjacentHTML("beforeend",t)}new p(".accordion-container",{duration:300,showMultiple:!1});i.defaults.baseURL=f;async function y(o={page:a,limit:u}){return(await i.get(l.FURNITURES,{params:o})).data}async function b(){return(await i.get(l.CATEGORIES)).data}async function E(){try{const o=await b();g(o),m(products)}catch{}finally{}}async function L(o={page:a,limit:u}){try{const t=await y(o);return console.log("Furnitures:",t),t}catch(t){return console.error("Furnitures downloading error:",t),null}}document.addEventListener("DOMContentLoaded",E);document.addEventListener("DOMContentLoaded",async()=>{console.log("Перевірка API...");const o=await L({page:a,limit:u});console.log("Меблі:",o)});
+      </li>`).join("");n.products.insertAdjacentHTML("beforeend",o)}function b(){n.products.innerHTML=""}new y(".accordion-container",{duration:300,showMultiple:!1});const L="https://furniture-store-v2.b.goit.study/api",d={FURNITURES:"/furnitures",CATEGORIES:"/categories"},E=1,f=8;l.defaults.baseURL=L;async function m(r={page:E,limit:f}){return(await l.get(d.FURNITURES,{params:r})).data}async function $(r,o){const{data:c}=await l(`${d.FURNITURES}?page=${o}&limit=${f}&category=${r}`);return c}async function I(){return(await l.get(d.CATEGORIES)).data}function p(){setTimeout(()=>{n.loadMoreBtn.classList.add("is-show")},500)}let g=1,a="";async function R(){try{const r=await I();h(r),a="all",n.categories.children[0].classList.add("categories-item--active");const{furnitures:c}=await m();u(c),p()}catch{}finally{}}async function S(r){const o=r.target.closest(".category-item");if(!o)return;[...r.currentTarget.children].map(t=>{t.classList.remove("categories-item--active")}),b(),o.classList.add("categories-item--active"),g=1,a=o.id,console.log(a);try{if(a==="all"){const{furnitures:t}=await m();u(t),p()}else{const{furnitures:t}=await $(a,g);u(t)}}catch{}finally{}}document.addEventListener("DOMContentLoaded",R);n.categories.addEventListener("click",S);
 //# sourceMappingURL=index.js.map

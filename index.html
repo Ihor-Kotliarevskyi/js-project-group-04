@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/js-project-group-04/index.js"></script>
     <link rel="modulepreload" crossorigin href="/js-project-group-04/assets/vendor-xD2YBz4L.js">
     <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/vendor-pvxkJjp9.css">
-    <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/index-Csi7BVs5.css">
+    <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/index-BZxjbu4V.css">
   </head>
   <body>
     <header class="header">
@@ -75,22 +75,27 @@
     <ul class="furniture-list-categories" id="categories"></ul>
 
     <ul class="furniture-list-products" id="products"></ul>
-    <button type="button">Показати ще</button>
+
+    <button class="load-more-btn" type="button">Показати ще</button>
   </div>
 </section>
 
       <section class="about-us">
   <div class="container about-container">
-<div class="about-content">
-    <h3 class="about-title">Про Меблерію</h3>
-    <p class="about-text">У Меблерії ми прагнемо створювати затишок та функціональність у кожному домі. Наша місія - пропонувати високоякісні меблі, що поєднують у собі сучасний дизайн, довговічність та доступність. Ми віримо, що ідеальний інтер'єр починається з правильних меблів</p>
+    <div class="about-content">
+      <h3 class="about-title">Про Меблерію</h3>
+      <p class="about-text">
+        У Меблерії ми прагнемо створювати затишок та функціональність у кожному
+        домі. Наша місія - пропонувати високоякісні меблі, що поєднують у собі
+        сучасний дизайн, довговічність та доступність. Ми віримо, що ідеальний
+        інтер'єр починається з правильних меблів
+      </p>
     </div>
     <div>
-   <picture class="about-img">
-
-  <img src="/src/img/about_pc.jpg" width="578" alt="About section image" />
-</picture>
-  </div>
+      <picture class="about-img">
+        <img src="/js-project-group-04/assets/about_pc@2x-C5pyxFTy.jpg" alt="About section image" />
+      </picture>
+    </div>
   </div>
 </section>
 
@@ -182,34 +187,48 @@
     </div>
 </div>
 
-      <div class="backdrop is-open">
-    <div class="order-modal">
-        <button type="button" class="modal-close-btn">
-            <svg class="modal-icon-btn" width="32" height="32">
-                <use href=""></use>
-            </svg>
-        </button>
-        <p class="modal-title">Замовити</p>
-        <form class="modal-order-form">
-            <div class="modal-field">
-                <label for="user-name" class="modal-label">Ім’я*</label>
-                <input type="text" class="modal-input" name="user-name" id="user-name" placeholder="Дмитро">
-            </div>
-            <div class="modal-field">
-                <label for="phone" class="modal-label">Телефон*</label>
-                <input type="text" class="modal-input" name="phone" id="phone" placeholder="38 099 123 22 11">
-            </div>
-            <div class="modal-field comment">
-                <label for="user-comment" class="modal-label">Коментар</label>
-                <textarea name="user-comment" id="user-comment" placeholder="Введіть ваш коментар"></textarea>
-            </div>
-            <button type="submit" class="modal-submit-btn">Надіслати заявку</button>
-        </form>
-    </div>
+      <div class="backdrop">
+  <div class="order-modal">
+    <button type="button" class="modal-close-btn">
+      <svg class="modal-icon-btn" width="32" height="32">
+        <use href=""></use>
+      </svg>
+    </button>
+    <p class="modal-title">Замовити</p>
+    <form class="modal-order-form">
+      <div class="modal-field">
+        <label for="user-name" class="modal-label">Ім’я*</label>
+        <input
+          type="text"
+          class="modal-input"
+          name="user-name"
+          id="user-name"
+          placeholder="Дмитро"
+        />
+      </div>
+      <div class="modal-field">
+        <label for="phone" class="modal-label">Телефон*</label>
+        <input
+          type="text"
+          class="modal-input"
+          name="phone"
+          id="phone"
+          placeholder="38 099 123 22 11"
+        />
+      </div>
+      <div class="modal-field comment">
+        <label for="user-comment" class="modal-label">Коментар</label>
+        <textarea
+          name="user-comment"
+          id="user-comment"
+          placeholder="Введіть ваш коментар"
+        ></textarea>
+      </div>
+      <button type="submit" class="modal-submit-btn">Надіслати заявку</button>
+    </form>
+  </div>
 </div>
 
-<!-- тестова кнопка для відкриття модалки -->
-<button type="button" class="open-modal-btn">Open modal (test)</button>
     </main>
 
     <footer class="footer">
