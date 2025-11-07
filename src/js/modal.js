@@ -170,4 +170,4 @@ function closeModal() {
 
 /* ===== тестовий виклик (можна прибрати) =====
 */
-  openProductModal('682f9bbf8acbdf505592ac45');
+// openProductModal('682f9bbf8acbdf505592ac45');

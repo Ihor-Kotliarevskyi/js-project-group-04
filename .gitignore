@@ -21,7 +21,6 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.swp
 
-# pull requests list
-pullrequests-list.txt
+# Dependency directories

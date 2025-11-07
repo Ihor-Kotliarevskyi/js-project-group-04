@@ -9,3 +9,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 import './js/render-function.js';
+
