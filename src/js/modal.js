@@ -1,8 +1,8 @@
-
+import iziToast from "izitoast";
 
 // order-modal
 
-const { default: iziToast } = require("izitoast");
+
 
 const backdropOrderModal = document.querySelector('.backdrop');
 const modalOrder = document.querySelector('.order-modal');
