@@ -1,4 +1,4 @@
-import{A as y,a as l}from"./assets/vendor-xD2YBz4L.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const i of s.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&t(i)}).observe(document,{childList:!0,subtree:!0});function c(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function t(e){if(e.ep)return;e.ep=!0;const s=c(e);fetch(e.href,s)}})();const n={categories:document.querySelector("#categories"),products:document.querySelector("#products"),modal:document.querySelector(".modal"),modalProduct:document.querySelector(".modal-product"),loadMoreBtn:document.querySelector(".load-more-btn"),loader:document.querySelector(".loader")};function h(r){const c=[{_id:"all",name:"Всі товари"},...r].map(({_id:t,name:e})=>`<li
+import{A as y,a as u}from"./assets/vendor-xD2YBz4L.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const c of e)if(c.type==="childList")for(const a of c.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&t(a)}).observe(document,{childList:!0,subtree:!0});function s(e){const c={};return e.integrity&&(c.integrity=e.integrity),e.referrerPolicy&&(c.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?c.credentials="include":e.crossOrigin==="anonymous"?c.credentials="omit":c.credentials="same-origin",c}function t(e){if(e.ep)return;e.ep=!0;const c=s(e);fetch(e.href,c)}})();const i={categories:document.querySelector("#categories"),products:document.querySelector("#products"),modal:document.querySelector(".modal"),modalProduct:document.querySelector(".modal-product"),loadMoreBtn:document.querySelector(".load-more-btn"),loader:document.querySelector(".loader"),feedbackCardList:document.querySelector(".feedback-card-list"),feedbackNavPrev:document.querySelector(".feedback-nav-prev"),feedbackNavNext:document.querySelector(".feedback-nav-next")};function b(r){const s=[{_id:"all",name:"Всі товари"},...r].map(({_id:t,name:e})=>`<li
         class="category-item" id="${t}"
         style="
           background-image: image-set(
@@ -8,7 +8,7 @@ import{A as y,a as l}from"./assets/vendor-xD2YBz4L.js";(function(){const o=docum
         "
       >
         ${e}
-      </li>`).join("");n.categories.innerHTML=c}function u(r){const o=r.map(({_id:c,name:t,images:e,price:s,color:i})=>`<li class="product-item">
+      </li>`).join("");i.categories.innerHTML=s}function l(r){const o=r.map(({_id:s,name:t,images:e,price:c,color:a})=>`<li class="product-item">
         <img
           class="products-image"
           src='${e[0]}'
@@ -17,15 +17,15 @@ import{A as y,a as l}from"./assets/vendor-xD2YBz4L.js";(function(){const o=docum
         <div class="product-description-box">
           <h4 class="products-title">${t}</h4>
           <ul class="products-color-list">
-            <li class="products-color-box" style="background-color: ${i[0]}"></li>
-            <li class="products-color-box" style="background-color: ${i[1]}"></li>
+            <li class="products-color-box" style="background-color: ${a[0]}"></li>
+            <li class="products-color-box" style="background-color: ${a[1]}"></li>
             <li
               class="products-color-box"
-              style="background-color: ${i[2]}"
+              style="background-color: ${a[2]}"
             ></li>
           </ul>
-          <p class="products-price">${s} грн</p>
+          <p class="products-price">${c} грн</p>
         </div>
         <button class="products-details-btn" type="button">Детальніше</button>
-      </li>`).join("");n.products.insertAdjacentHTML("beforeend",o)}function b(){n.products.innerHTML=""}new y(".accordion-container",{duration:300,showMultiple:!1});const L="https://furniture-store-v2.b.goit.study/api",d={FURNITURES:"/furnitures",CATEGORIES:"/categories"},E=1,f=8;l.defaults.baseURL=L;async function m(r={page:E,limit:f}){return(await l.get(d.FURNITURES,{params:r})).data}async function $(r,o){const{data:c}=await l(`${d.FURNITURES}?page=${o}&limit=${f}&category=${r}`);return c}async function I(){return(await l.get(d.CATEGORIES)).data}function p(){setTimeout(()=>{n.loadMoreBtn.classList.add("is-show")},500)}let g=1,a="";async function R(){try{const r=await I();h(r),a="all",n.categories.children[0].classList.add("categories-item--active");const{furnitures:c}=await m();u(c),p()}catch{}finally{}}async function S(r){const o=r.target.closest(".category-item");if(!o)return;[...r.currentTarget.children].map(t=>{t.classList.remove("categories-item--active")}),b(),o.classList.add("categories-item--active"),g=1,a=o.id,console.log(a);try{if(a==="all"){const{furnitures:t}=await m();u(t),p()}else{const{furnitures:t}=await $(a,g);u(t)}}catch{}finally{}}document.addEventListener("DOMContentLoaded",R);n.categories.addEventListener("click",S);
+      </li>`).join("");i.products.insertAdjacentHTML("beforeend",o)}function h(){i.products.innerHTML=""}new y(".accordion-container",{duration:300,showMultiple:!1});const L="https://furniture-store-v2.b.goit.study/api",d={FURNITURES:"/furnitures",CATEGORIES:"/categories"},S=1,g=8;u.defaults.baseURL=L;async function m(r={page:S,limit:g}){return(await u.get(d.FURNITURES,{params:r})).data}async function v(r,o){const{data:s}=await u(`${d.FURNITURES}?page=${o}&limit=${g}&category=${r}`);return s}async function E(){return(await u.get(d.CATEGORIES)).data}function p(){setTimeout(()=>{i.loadMoreBtn.classList.add("is-show")},500)}let f=1,n="";async function $(){try{const r=await E();b(r),n="all",i.categories.children[0].classList.add("categories-item--active");const{furnitures:s}=await m();l(s),p()}catch{}finally{}}async function C(r){const o=r.target.closest(".category-item");if(!o)return;[...r.currentTarget.children].map(t=>{t.classList.remove("categories-item--active")}),h(),o.classList.add("categories-item--active"),f=1,n=o.id,console.log(n);try{if(n==="all"){const{furnitures:t}=await m();l(t),p()}else{const{furnitures:t}=await v(n,f);l(t)}}catch{}finally{}}document.addEventListener("DOMContentLoaded",$);i.categories.addEventListener("click",C);
 //# sourceMappingURL=index.js.map
