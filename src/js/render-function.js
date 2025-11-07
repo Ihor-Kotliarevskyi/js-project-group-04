@@ -54,3 +54,12 @@ export function renderProducts(arrey) {
 // export function clearProdutsList() {
 //   refs.products.innerHTML = '';
 // }
+
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
+
+
+new Accordion('.accordion-container', {
+  duration: 300,
+  showMultiple: false,
+});
