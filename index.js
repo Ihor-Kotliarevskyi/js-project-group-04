@@ -2,8 +2,8 @@ import{A as y,a as u}from"./assets/vendor-xD2YBz4L.js";(function(){const o=docum
         class="category-item" id="${t}"
         style="
           background-image: image-set(
-            url('img/furniture/${t}.png') 1x,
-            url('img/furniture/${t}@2x.png') 2x
+            url('./img/furniture/${t}.png') 1x,
+            url('./img/furniture/${t}@2x.png') 2x
           );
         "
       >
