@@ -1,5 +1,6 @@
 // Хендлери, які передаються в addEventListener.
 
+import { getCategories } from './products-api';
 import refs, { categoriesArrey, productsArrey } from './refs';
 import { renderCategories, renderProducts } from './render-function';
 
@@ -8,9 +9,9 @@ let currentCategory = '';
 
 export async function initialHome() {
   try {
-    // const categories = await getCategories();
+    const categories = await getCategories();
 
-    renderCategories(categoriesArrey);
+    renderCategories(categories);
 
     // currentCategory = 'all';
     // const allCategoryItem = refs.categories.children[0].children[0];
