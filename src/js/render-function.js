@@ -1,5 +1,7 @@
 // Функції для відображення елементів інтерфейсу.
 import refs from './refs';
+import Accordion from "accordion-js";
+import "accordion-js/dist/accordion.min.css";
 
 export function renderCategories(arrey) {
   const categories = [{ _id: 'all', name: 'Всі товари' }, ...arrey];
@@ -54,10 +56,6 @@ export function renderProducts(arrey) {
 // export function clearProdutsList() {
 //   refs.products.innerHTML = '';
 // }
-
-import Accordion from "accordion-js";
-import "accordion-js/dist/accordion.min.css";
-
 
 new Accordion('.accordion-container', {
   duration: 300,
