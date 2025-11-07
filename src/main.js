@@ -1,6 +1,10 @@
 import './css/furniture_details_modal.css';
 import './js/modal.js';
 // Логіка сторінки index.html
+
+import { initialHome } from './js/handlers';
+
+document.addEventListener('DOMContentLoaded', initialHome);
 import { FURNITURE_LIMIT, FURNITURE_PAGE } from './js/constants.js';
 import { loadFurnitures } from './js/handlers.js';
 
