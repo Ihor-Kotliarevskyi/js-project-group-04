@@ -36,7 +36,8 @@ export async function initialHome() {
     // showError(error);
   } finally {
     // hideLoader();
-
+  }
+}
 // furniture
 export async function loadFurnitures(
   params = { page: FURNITURE_PAGE, limit: FURNITURE_LIMIT }
