@@ -11,3 +11,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   console.log('Меблі:', furnitures);
 });
+
+import './js/render-function.js';
+import './js/modal.js';
