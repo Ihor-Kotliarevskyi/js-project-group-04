@@ -11,12 +11,6 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-        - name: Clean npm cache and install dependencies
-  run: |
-    rm -rf node_modules package-lock.json
-    npm cache clean --force
-    npm install
-
       - name: Install and build 🔧
         run: |
           npm install
