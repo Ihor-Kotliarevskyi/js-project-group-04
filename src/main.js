@@ -5,3 +5,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   const furnitures = await loadFurnitures({ page: 1, limit: 8 });
   console.log('Меблі:', furnitures);
 });
+
+import './js/render-function.js';
