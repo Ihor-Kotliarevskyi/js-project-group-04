@@ -7,6 +7,9 @@ const refs = {
   modalProduct: document.querySelector('.modal-product'),
   loadMoreBtn: document.querySelector('.load-more-btn'),
   loader: document.querySelector('.loader'),
+  feedbackCardList: document.querySelector('.feedback-card-list'),
+  feedbackNavPrev: document.querySelector('.feedback-nav-prev'),
+  feedbackNavNext: document.querySelector('.feedback-nav-next'),
 };
 
 export default refs;
