@@ -2,7 +2,20 @@
 
 import { getCategories } from './products-api';
 import { renderCategories, renderProducts } from './render-function';
+import {
+  getFurnitures,
+  getFurnitureByID,
+  getCategories,
+  getFeedbacks,
+  createOrder,
+} from './products-api.js';
 
+import {
+  FURNITURE_PAGE,
+  FURNITURE_LIMIT,
+  FEEDBACK_PAGE,
+  FEEDBACK_LIMIT,
+} from './constants.js';
 let currentPage = 1;
 let currentCategory = '';
 
@@ -23,20 +36,7 @@ export async function initialHome() {
     // showError(error);
   } finally {
     // hideLoader();
-import {
-  getFurnitures,
-  getFurnitureByID,
-  getCategories,
-  getFeedbacks,
-  createOrder,
-} from './products-api.js';
 
-import {
-  FURNITURE_PAGE,
-  FURNITURE_LIMIT,
-  FEEDBACK_PAGE,
-  FEEDBACK_LIMIT,
-} from './constants.js';
 // furniture
 export async function loadFurnitures(
   params = { page: FURNITURE_PAGE, limit: FURNITURE_LIMIT }
