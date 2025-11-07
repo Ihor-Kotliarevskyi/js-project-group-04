@@ -1,2 +1,31 @@
-import{a as d,i as p,A as y}from"./assets/vendor-BkGyrsHg.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&s(a)}).observe(document,{childList:!0,subtree:!0});function n(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=n(e);fetch(e.href,r)}})();d.defaults.baseURL="https://furniture-store-v2.b.goit.study/api";document.querySelector(".modal-window");const c=document.querySelector(".backdrop");document.querySelector(".order-modal");const g=document.querySelector(".modal-close-btn");document.querySelector(".modal-submit-btn");const i=document.querySelector(".modal-order-form");function L(){c.classList.add("is-open"),document.body.classList.add("modal-open"),window.addEventListener("keydown",f)}function u(){c.classList.remove("is-open"),document.body.classList.remove("modal-open"),window.removeEventListener("keydown",f)}g.addEventListener("click",u);c.addEventListener("click",t=>{t.target===c&&u()});function f(t){(t.key==="Escape"||t.key==="Esc")&&u()}i.addEventListener("submit",t=>{t.preventDefault();const o=i.elements["user-name"].value.trim(),n=i.elements.phone.value.trim();if(i.elements["user-comment"].value.trim(),!o||!n){p.warning({title:"Ooops!",message:"Будь ласка, заповніть всі обов'язкові поля!",position:"topRight"});return}const s=n.replace(/[^\d+]/g,"");if(!/^\+?\d{10,15}$/.test(s)){p.warning({title:"Ooops!",message:"Будь ласка, введіть коректний номер телефону",position:"topRight"});return}});document.querySelector(".open-modal-btn")?.addEventListener("click",L);const h="https://furniture-store-v2.b.goit.study/api",E={FURNITURES:"/furnitures/"},l=1,m=8;d.defaults.baseURL=h;async function v(t={page:l,limit:m}){return(await d.get(E.FURNITURES,{params:t})).data}async function w(t={page:l,limit:m}){try{const o=await v(t);return console.log("Furnitures:",o),o}catch(o){return console.error("Furnitures downloading error:",o),null}}new y(".accordion-container",{duration:300,showMultiple:!1});document.addEventListener("DOMContentLoaded",async()=>{console.log("Перевірка API...");const t=await w({page:l,limit:m});console.log("Меблі:",t)});
+import{A as p,a as i}from"./assets/vendor-xD2YBz4L.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&s(n)}).observe(document,{childList:!0,subtree:!0});function c(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=c(e);fetch(e.href,r)}})();const f="https://furniture-store-v2.b.goit.study/api",l={FURNITURES:"/furnitures/",CATEGORIES:"/categories"},a=1,u=8,d={categories:document.querySelector("#categories"),products:document.querySelector("#products"),modal:document.querySelector(".modal"),modalProduct:document.querySelector(".modal-product"),loadMoreBtn:document.querySelector(".load-more-btn"),loader:document.querySelector(".loader")};function g(o){const t=[{_id:"all",name:"Всі товари"},...o];console.log(t);const c=t.map(({_id:s,name:e})=>`<li
+        class="category-item"
+        style="
+          background-image: image-set(
+            url('/img/furniture/${s}.png') 1x,
+            url('/img/furniture/${s}@2x.png') 2x
+          );
+        "
+      >
+        ${e}
+      </li>`).join("");d.categories.innerHTML=c}function m(o){const t=o.map(({_id:c,name:s,images:e,price:r,color:n})=>`<li class="product-item">
+        <img
+          class="products-image"
+          src='${e[0]}'
+          alt="${s}"
+        />
+        <div class="product-description-box">
+          <h4 class="products-title">${s}</h4>
+          <ul class="products-color-list">
+            <li class="products-color-box" style="background-color: ${n[0]}"></li>
+            <li class="products-color-box" style="background-color: ${n[1]}"></li>
+            <li
+              class="products-color-box"
+              style="background-color: ${n[2]}"
+            ></li>
+          </ul>
+          <p class="products-price">${r} грн</p>
+        </div>
+        <button class="products-details-btn" type="button">Детальніше</button>
+      </li>`).join("");d.products.insertAdjacentHTML("beforeend",t)}new p(".accordion-container",{duration:300,showMultiple:!1});i.defaults.baseURL=f;async function y(o={page:a,limit:u}){return(await i.get(l.FURNITURES,{params:o})).data}async function b(){return(await i.get(l.CATEGORIES)).data}async function E(){try{const o=await b();g(o),m(products)}catch{}finally{}}async function L(o={page:a,limit:u}){try{const t=await y(o);return console.log("Furnitures:",t),t}catch(t){return console.error("Furnitures downloading error:",t),null}}document.addEventListener("DOMContentLoaded",E);document.addEventListener("DOMContentLoaded",async()=>{console.log("Перевірка API...");const o=await L({page:a,limit:u});console.log("Меблі:",o)});
 //# sourceMappingURL=index.js.map
