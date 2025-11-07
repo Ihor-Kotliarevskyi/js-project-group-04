@@ -1,12 +1,12 @@
 import './css/furniture_details_modal.css';
 import './js/modal.js';
-// Логіка сторінки index.html
-
-import { initialHome } from './js/handlers';
-
-document.addEventListener('DOMContentLoaded', initialHome);
 import { FURNITURE_LIMIT, FURNITURE_PAGE } from './js/constants.js';
 import { loadFurnitures } from './js/handlers.js';
+import { initialHome } from './js/handlers';
+import './js/render-function.js';
+import './js/modal.js';
+ 
+document.addEventListener('DOMContentLoaded', initialHome);
 
 document.addEventListener('DOMContentLoaded', async () => {
   console.log('Перевірка API...');
@@ -17,7 +17,3 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
   console.log('Меблі:', furnitures);
 });
-
-import './js/render-function.js';
-
-import './js/modal.js';
