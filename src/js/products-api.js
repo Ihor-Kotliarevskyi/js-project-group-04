@@ -62,8 +62,8 @@ export async function createOrder(orderData) {
 // export async function getFurnitures(currentPage = 1) {
 //   const { data } = await axios.get(API_ENDPOINTS.FURNITURES, {
 //     params: {
-//       package: currentPage,
-//       limit:   FURNITURE_LIMIT,
+//       page: currentPage,
+//       limit: FURNITURE_LIMIT,
 //     },
 //   });
 //   return data;
