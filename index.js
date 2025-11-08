@@ -2,8 +2,8 @@ import{A as h,a as g}from"./assets/vendor-xD2YBz4L.js";(function(){const e=docum
         class="category-item" id="${o}"
         style="
           background-image: image-set(
-            url('/img/furniture/${o}.png') 1x,
-            url('/img/furniture/${o}@2x.png') 2x
+            url('/furniture-bg/${o}.png') 1x,
+            url('/furniture-bg/${o}@2x.png') 2x
           );
         "
       ><button class="categories-btn" type="button">${t}</button></li>`).join("");a.categories.innerHTML=s}function d(r){const e=r.map(({_id:s,name:o,images:t,price:c,color:i})=>`<li class="product-item">
