@@ -1,9 +1,11 @@
+// src/main.js
+import refs from './js/refs.js';
 import {
   handlerClickCategory,
   initialHome,
   onLoadMoreClick,
-} from './js/handlers';
-import refs from './js/refs';
+  onProductsClick, // 
+} from './js/handlers.js';
 
 window.addEventListener('load', () => {
   requestAnimationFrame(() => {
@@ -11,25 +13,23 @@ window.addEventListener('load', () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', initialHome);
-refs.categories.addEventListener('click', handlerClickCategory);
-refs.loadMoreBtn.addEventListener('click', onLoadMoreClick);
-import { openProductModal } from './js/modal.js';
+document.addEventListener('DOMContentLoaded', () => {
+  initialHome();
 
-const grid = document.getElementById('products');
+  if (refs.categories && !refs.categories.dataset.bound) {
+    refs.categories.addEventListener('click', handlerClickCategory);
+    refs.categories.dataset.bound = '1';
+  }
 
-if (grid) {
-  grid.addEventListener('click', e => {
-    const trigger = e.target.closest('.products-details-btn, .products-image');
-    if (!trigger) return;
-    const card = trigger.closest('.product-item');
-    if (!card) return;
-    const id = card.dataset.id; //
-    if (!id) {
-      console.warn('Не знайдено data-id на .product-item');
-      return;
-    }
-    e.preventDefault(); 
-    openProductModal(id);
-  });
-}
+  if (refs.loadMoreBtn && !refs.loadMoreBtn.dataset.bound) {
+    refs.loadMoreBtn.addEventListener('click', onLoadMoreClick);
+    refs.loadMoreBtn.dataset.bound = '1';
+  }
+
+ 
+  const productsEl = refs.products || document.getElementById('products');
+  if (productsEl && productsEl.dataset.boundModal !== '1') {
+    productsEl.addEventListener('click', onProductsClick); 
+    productsEl.dataset.boundModal = '1';
+  }
+});
