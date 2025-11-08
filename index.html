@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/js-project-group-04/index.js"></script>
     <link rel="modulepreload" crossorigin href="/js-project-group-04/assets/vendor-xD2YBz4L.js">
     <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/vendor-pvxkJjp9.css">
-    <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/index-u0fWsqp6.css">
+    <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/index-B_W2xy6B.css">
   </head>
   <body>
     <header class="header">
@@ -104,10 +104,15 @@
         інтер'єр починається з правильних меблів
       </p>
     </div>
-    <div>
-      <picture class="about-img">
-        <img src="/js-project-group-04/assets/about_pc@2x-C5pyxFTy.jpg" alt="About section image" />
-      </picture>
+    <div class="about-picture">
+       <picture  class="about-img" >
+            <source media="(min-width: 1440px)" srcset="/js-project-group-04/assets/about_pc-CFGj-BpJ.jpg 1x, /js-project-group-04/assets/about_pc@2x-C5pyxFTy.jpg 2x">
+        
+           <source media="(min-width: 768px)" srcset="/js-project-group-04/assets/about_tab-Zktzn0D_.jpg 1x, /js-project-group-04/assets/about_tab@2x-nysqRFfN.jpg 2x">
+
+           <source media="(max-width: 375px)" srcset="/js-project-group-04/assets/about_mob-Bi52Lj5U.jpg 1x, /js-project-group-04/assets/about_mob@2x-BaWXl95s.jpg 2x">
+           <img src="img/about_tab.jpg 1x"  srcset="/js-project-group-04/assets/about_mob@2x-BaWXl95s.jpg 2x" alt="About us section image" />
+        </picture> 
     </div>
   </div>
 </section>
