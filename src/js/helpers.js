@@ -57,4 +57,10 @@ export function showError(message) {
   iziToast.error({
     message: message
   })
+export function showLoader() {
+  refs.loader.classList.remove("hidden")
+}
+
+export function hideLoader() {
+  refs.loader.classList.add("hidden")
 }
