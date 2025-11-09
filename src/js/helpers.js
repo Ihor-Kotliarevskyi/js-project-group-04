@@ -1,5 +1,6 @@
 // Допоміжні функції, які знадобляться для реалізації завдання (показ повідомлень, кнопок, лоадерів)
 
+import iziToast from 'izitoast';
 import refs from './refs';
 
 export function showLoadMoreBtn() {
@@ -29,6 +30,33 @@ export function roundRating(rating) {
   return Math.round(rating * 2) / 2;
 };
 
+iziToast.settings({
+  position: "topRight",
+  displayMode: "replace"
+})
+
+export function showInfo(message) {
+  iziToast.info({
+    message: message,
+  });
+}
+
+export function showSuccess(message) {
+  iziToast.success({
+    message: message,
+  })
+}
+
+export function showWarning(message) {
+  iziToast.warning({
+    message: message,
+  })
+}
+
+export function showError(message) {
+  iziToast.error({
+    message: message
+  })
 export function showLoader() {
   refs.loader.classList.remove("hidden")
 }
