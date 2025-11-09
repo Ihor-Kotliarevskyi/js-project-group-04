@@ -178,6 +178,7 @@ function closeModal() {
 
 /* ===== тестовий виклик (можна прибрати) =====
  */
+
 // openProductModal('682f9bbf8acbdf505592ac45');
 
 // order-modal
@@ -188,25 +189,34 @@ const closeOrderBtn = document.querySelector('.modal-close-btn');
 const submitBtn = document.querySelector('.modal-submit-btn');
 const orderForm = document.querySelector('.modal-order-form');
 
-function openOrderModal() {
-  backdropOrderModal.classList.add('is-open');
-  document.body.classList.add('modal-open');
+// асинхронне відкриття модалки
+
+export async function openOrderModal() {
+    backdropOrderModal.classList.add('is-open');
+    document.body.classList.add('modal-open');
+    
+    await new Promise(resolve => setTimeout(resolve, 300));
 
   window.addEventListener('keydown', handleEscape);
 }
 
-function closeOrderModal() {
-  backdropOrderModal.classList.remove('is-open');
-  document.body.classList.remove('modal-open');
 
-  window.removeEventListener('keydown', handleEscape);
+export async function closeOrderModal() {
+    backdropOrderModal.classList.remove('is-open');
+    document.body.classList.remove('modal-open');
+
+    await new Promise(resolve => setTimeout(resolve, 300));
+
+    window.removeEventListener('keydown', handleEscape);
 }
 
-closeOrderBtn.addEventListener('click', closeOrderModal);
-
-backdropOrderModal.addEventListener('click', event => {
-  if (event.target === backdropOrderModal) {
+closeOrderBtn.addEventListener('click', async () => {
     closeOrderModal();
+});
+
+backdropOrderModal.addEventListener('click', async event => {
+  if (event.target === backdropOrderModal) {
+    await closeOrderModal();
   }
 });
 
@@ -216,36 +226,60 @@ function handleEscape(event) {
   }
 }
 
-orderForm.addEventListener('submit', event => {
+// валідація форми
+
+orderForm.addEventListener('submit', async event => {
   event.preventDefault();
 
   const name = orderForm.elements['user-name'].value.trim();
   const phone = orderForm.elements['phone'].value.trim();
-  const comment = orderForm.elements['user-comment'].value.trim();
 
   if (!name || !phone) {
     iziToast.warning({
-      title: 'Ooops!',
+      title: 'Упс!',
       message: "Будь ласка, заповніть всі обов'язкові поля!",
       position: 'topRight',
     });
     return;
   }
 
-  const clearPhone = phone.replace(/[^\d+]/g, '');
-  const phonePattern = /^\+?\d{10,15}$/;
+    const clearPhone = phone.replace(/[^\d+]/g, '');
+    const phonePattern = /^\+?\d{10,15}$/;
 
   if (!phonePattern.test(clearPhone)) {
     iziToast.warning({
-      title: 'Ooops!',
+      title: 'Упс!',
       message: 'Будь ласка, введіть коректний номер телефону',
       position: 'topRight',
     });
     return;
   }
+
+  // асинхронний запит
+  try {
+    await new Promise(resolve => setTimeout(resolve, 500)); 
+    iziToast.success({
+      title: 'Успішно!',
+      message: 'Ваше замовлення відправлено!',
+      position: 'topRight',
+    });
+
+    orderForm.reset();
+    await closeOrderModal();
+    
+  } catch (error) {
+    iziToast.error({
+      title: 'Помилка!',
+      message: 'Щось пішло не так. Спробуйте ще раз.',
+      position: 'topRight',
+    });
+  }
 });
 
 // тестова кнопка для відкриття модалки
 document
-  .querySelector('.open-modal-btn')
-  ?.addEventListener('click', openOrderModal);
+    .querySelector('.open-modal-btn')
+    ?.addEventListener('click', async () => {
+        await openOrderModal()
+    });
+

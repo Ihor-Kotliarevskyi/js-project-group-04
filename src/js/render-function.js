@@ -3,6 +3,7 @@ import refs from './refs';
 import Accordion from 'accordion-js';
 import 'accordion-js/dist/accordion.min.css';
 import { roundRating } from './helpers';
+import '../css/faq.css';
 
 export function renderCategories(arrey) {
   const categories = [{ _id: 'all', name: 'Всі товари' }, ...arrey];
@@ -26,7 +27,13 @@ export function renderCategories(arrey) {
 export function renderFurnitures(arrey) {
   const markup = arrey
     .map(
-      ({ _id, name, images, price, color }) => `<li class="product-item">
+      ({
+        _id,
+        name,
+        images,
+        price,
+        color,
+      }) => `<li class="product-item" data-id="${_id}">
         <img
           class="products-image"
           src='${images[0]}'
