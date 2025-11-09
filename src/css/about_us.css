@@ -1,19 +1,33 @@
+.about-us {
+  background: #f0e6e6;
+  padding: 64px 20px;
+}
+
+/* -------- БАЗОВА ВЕРСІЯ (mobile-first, гумова до 375px) -------- */
 .about-container {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 64px;
   gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.about-content {
+  width: 100%;
+  text-align: center;
 }
 
 .about-title {
   font-weight: 700;
-  font-size: 48px;
+  font-size: 36px;
   line-height: 1.2;
   letter-spacing: 0.01em;
   color: #080c09;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
+
 .about-text {
   font-weight: 400;
   font-size: 18px;
@@ -21,9 +35,47 @@
   color: #080c09;
 }
 
-.about-img {
+.about-picture {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.about-picture img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
+  object-fit: cover;
+}
+
+/* -------- TABLET (з 768px) -------- */
+@media screen and (min-width: 768px) {
+  .about-container {
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 32px;
+  }
+
+  .about-content,
+  .about-picture {
+    flex: 1 1 50%;
+  }
+
+  .about-content {
+    text-align: left;
+  }
+
+}
+
+/* -------- DESKTOP (з 1440px) -------- */
+@media screen and (min-width: 1440px) {
+  .about-container {
+    padding: 64px;
+    gap: 24px;  
+    flex-direction: row;
+  }
+
+  .about-title {
+    font-size: 48px;
+  }
 }
