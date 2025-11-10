@@ -44,16 +44,15 @@
             <a href="#faq-section" class="nav-link">Часті питання</a>
           </li>
           <li class="nav-list-item">
-  <a href="#feedbacks-section-id" class="nav-link">Відгуки</a>
-</li>
-
+            <a href="#feedbacks-section-id" class="nav-link">Відгуки</a>
+          </li>
         </ul>
-        <button href="#furniture-list" type="button" class="header-button hidden-element">
+        <button onclick="location.href='#furniture-list'" type="button" class="header-button hidden-element">
           До покупок
         </button>
       </div>
       <button type="button" class="burger-button" data-menu-open>
-        <svg class="burger-button" width="32" height="32">
+        <svg class="burger-button-icon" width="32" height="32">
           <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#menu"></use>
         </svg>
       </button>
@@ -64,18 +63,6 @@
     <div class="burger-menu">
   <div class="container">
     <nav class="burger-menu-header-nav">
-      <!-- <div class="burger-menu-navbar-header">
-            <a href="./index.html" class="logo">
-                <svg class="site-icon" width="163" height="70">
-                <use href="/img/sprite.svg#company-logo-black">
-                </svg>
-            </a>
-            <button class="burger-menu-navbar-btn-close" type="button" data-navbar-close>
-            <svg width="32" height="32">
-                <use href="/img/sprite.svg#x"></use>
-            </svg>
-            </button>
-        </div> -->
       <ul class="burger-menu-nav-list">
         <li class="nav-list-item">
           <a href="#furniture-list" class="nav-link">Наші меблі</a>
@@ -87,11 +74,11 @@
           <a href="#faq-section" class="nav-link">Часті питання</a>
         </li>
         <li class="nav-list-item">
-          <a href="#feedback" class="nav-link">Відгуки</a>
+          <a href="#feedbacks-section-id" class="nav-link">Відгуки</a>
         </li>
       </ul>
       <button
-        href="#furniture-list"
+        onclick="location.href='#furniture-list'"
         type="button"
         class="burger-menu-header-button"
       >
@@ -126,12 +113,9 @@
           Знайдіть ідеальні рішення для вашого інтер'єру
         </h3>
       </div>
-
       <ul class="furniture-list-categories" id="categories"></ul>
-
       <ul class="furniture-list-products" id="products"></ul>
     </div>
-
     <button class="load-more-btn" type="button">Показати ще</button>
   </div>
 </section>
@@ -148,14 +132,25 @@
       </p>
     </div>
     <div class="about-picture">
-       <picture  class="about-img" >
-            <source media="(min-width: 1440px)" srcset="/js-project-group-04/assets/about_pc-CFGj-BpJ.jpg 1x, /js-project-group-04/assets/about_pc@2x-C5pyxFTy.jpg 2x">
-        
-           <source media="(min-width: 768px)" srcset="/js-project-group-04/assets/about_tab-Zktzn0D_.jpg 1x, /js-project-group-04/assets/about_tab@2x-nysqRFfN.jpg 2x">
-
-           <source media="(max-width: 375px)" srcset="/js-project-group-04/assets/about_mob-Bi52Lj5U.jpg 1x, /js-project-group-04/assets/about_mob@2x-BaWXl95s.jpg 2x">
-           <img src="img/about_tab.jpg 1x"  srcset="/js-project-group-04/assets/about_mob@2x-BaWXl95s.jpg 2x" alt="About us section image" />
-        </picture> 
+      <picture class="about-img">
+        <source
+          media="(min-width: 1440px)"
+          srcset="/js-project-group-04/assets/about_pc-CFGj-BpJ.jpg 1x, /js-project-group-04/assets/about_pc@2x-C5pyxFTy.jpg 2x"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="/js-project-group-04/assets/about_tab-Zktzn0D_.jpg 1x, /js-project-group-04/assets/about_tab@2x-nysqRFfN.jpg 2x"
+        />
+        <source
+          media="(max-width: 767px)"
+          srcset="/js-project-group-04/assets/about_mob-Bi52Lj5U.jpg 1x, /js-project-group-04/assets/about_mob@2x-BaWXl95s.jpg 2x"
+        />
+        <img
+          src="/js-project-group-04/assets/about_mob-Bi52Lj5U.jpg"
+          srcset="/js-project-group-04/assets/about_mob@2x-BaWXl95s.jpg 2x"
+          alt="About us section image"
+        />
+      </picture>
     </div>
   </div>
 </section>
@@ -165,57 +160,94 @@
   <div class="accordion-container">
     <div class="ac">
       <h2 class="ac-header">
-        <button type="button" class="ac-trigger">Як здійснюється доставка меблів?<svg class="ac-icon" width="32" height="32">
+        <button type="button" class="ac-trigger">
+          Як здійснюється доставка меблів?
+          <svg class="ac-icon" width="32" height="32">
             <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#chevron-down"></use>
-          </svg></button>
+          </svg>
+        </button>
       </h2>
       <div class="ac-panel">
-        <p class="ac-text">Ми доставляємо замовлення по всій Україні через надійні служби. Термін доставки зазвичай складає 3–7 днів залежно від регіону.</p>
+        <p class="ac-text">
+          Ми доставляємо замовлення по всій Україні через надійні служби. Термін
+          доставки зазвичай складає 3–7 днів залежно від регіону.
+        </p>
       </div>
     </div>
     <div class="ac">
       <h2 class="ac-header">
-        <button type="button" class="ac-trigger">Чи є можливість вибрати колір або матеріал?<svg class="ac-icon" width="32" height="32">
+        <button type="button" class="ac-trigger">
+          Чи є можливість вибрати колір або матеріал?<svg
+            class="ac-icon"
+            width="32"
+            height="32"
+          >
             <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#chevron-down"></use>
-          </svg></button>
+          </svg>
+        </button>
       </h2>
       <div class="ac-panel">
-        <p class="ac-text">Так, у багатьох моделях доступні варіанти оббивки та кольорів. Усі доступні опції вказані на сторінці товару.</p>
+        <p class="ac-text">
+          Так, у багатьох моделях доступні варіанти оббивки та кольорів. Усі
+          доступні опції вказані на сторінці товару.
+        </p>
       </div>
     </div>
     <div class="ac">
       <h2 class="ac-header">
-        <button type="button" class="ac-trigger">Чи можна повернути товар, якщо він не підійшов?<svg class="ac-icon" width="32" height="32">
+        <button type="button" class="ac-trigger">
+          Чи можна повернути товар, якщо він не підійшов?<svg
+            class="ac-icon"
+            width="32"
+            height="32"
+          >
             <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#chevron-down"></use>
-          </svg></button>
+          </svg>
+        </button>
       </h2>
       <div class="ac-panel">
-        <p class="ac-text">Так, ви можете повернути товар протягом 14 днів, якщо він не був у користуванні та збережений у первинному вигляді.</p>
+        <p class="ac-text">
+          Так, ви можете повернути товар протягом 14 днів, якщо він не був у
+          користуванні та збережений у первинному вигляді.
+        </p>
       </div>
     </div>
     <div class="ac">
       <h2 class="ac-header">
-        <button type="button" class="ac-trigger">Чи надаєте ви послугу збирання меблів?<svg class="ac-icon" width="32" height="32">
+        <button type="button" class="ac-trigger">
+          Чи надаєте ви послугу збирання меблів?<svg
+            class="ac-icon"
+            width="32"
+            height="32"
+          >
             <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#chevron-down"></use>
-          </svg></button>
+          </svg>
+        </button>
       </h2>
       <div class="ac-panel">
-        <p class="ac-text">Так, під час оформлення замовлення можна обрати послугу збирання. Наші майстри зберуть меблі у зручний для вас час.</p>
+        <p class="ac-text">
+          Так, під час оформлення замовлення можна обрати послугу збирання. Наші
+          майстри зберуть меблі у зручний для вас час.
+        </p>
       </div>
     </div>
     <div class="ac">
       <h2 class="ac-header">
-        <button type="button" class="ac-trigger">Як здійснити оплату?<svg class="ac-icon" width="32" height="32">
+        <button type="button" class="ac-trigger">
+          Як здійснити оплату?<svg class="ac-icon" width="32" height="32">
             <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#chevron-down"></use>
-          </svg></button>
+          </svg>
+        </button>
       </h2>
       <div class="ac-panel">
-        <p class="ac-text">Ми приймаємо оплату карткою онлайн, банківським переказом або післяплатою при отриманні.</p>
+        <p class="ac-text">
+          Ми приймаємо оплату карткою онлайн, банківським переказом або
+          післяплатою при отриманні.
+        </p>
       </div>
     </div>
   </div>
 </section>
-
 
       <section class="feedback" id="feedbacks-section-id">
   <div class="container feedback-container">
@@ -237,7 +269,6 @@
             aria-label="Попередній відгук"
             type="button"
           >
-            <!-- Додати svg посилання на стрілки  -->
             <svg class="" width="24" height="24">
               <use href="/js-project-group-04/assets/sprite-CT7NQxS7.svg#icon-arrow-left"></use>
             </svg>
@@ -257,49 +288,45 @@
   </div>
 </section>
 
-      <!-- Furniture Details Modal -->
-<div class="modal-window visuallyhidden" aria-hidden="true">
-    <div class="product-modalWindow" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-window visuallyhidden" aria-hidden="true">
+  <div
+    class="product-modalWindow"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <button class="modal-close-btn" type="button" aria-label="Закрити">
+      ✕
+    </button>
 
-        <button class="modal-close-btn" type="button" aria-label="Закрити">
-            ✕
-        </button>
-
-        <!-- ЛІВА КОЛОНКА -->
-        <div class="modal-left">
-            <img class="modal-image-0" src="" alt="Furniture photo" />
-            <div class="modal-bottom-row">
-                <!-- мініатюри підставить JS -->
-            </div>
-        </div>
-
-        <!-- ПРАВА КОЛОНКА -->
-        <div class="modal-right">
-            <h2 id="modal-title" class="product-modal-title">Назва</h2>
-            <p class="modal-description">Категорія</p>
-
-            <h3 class="modal-price">0 грн</h3>
-            <div class="modal-rating-stars"><!-- зірки --></div>
-
-            <div class="color-options">
-                <p class="color-label">Колір</p>
-                <div class="radio-group"><!-- кольори --></div>
-            </div>
-
-            <p class="furnitureDescription">Опис…</p>
-            <p class="furnitureSize">Розміри: —</p>
-
-            <button class="modalButton" type="button">Перейти до замовлення</button>
-        </div>
+    <div class="modal-left">
+      <img class="modal-image-0" src="" alt="Furniture photo" />
+      <div class="modal-bottom-row"></div>
     </div>
+
+    <div class="modal-right">
+      <h2 id="modal-title" class="product-modal-title">Назва</h2>
+      <p class="modal-description">Категорія</p>
+
+      <h3 class="modal-price">0 грн</h3>
+      <div class="modal-rating-stars"></div>
+
+      <div class="color-options">
+        <p class="color-label">Колір</p>
+        <div class="radio-group"></div>
+      </div>
+
+      <p class="furnitureDescription">Опис…</p>
+      <p class="furnitureSize">Розміри: —</p>
+
+      <button class="modalButton" type="button">Перейти до замовлення</button>
+    </div>
+  </div>
 </div>
 
-      
-<div class="backdrop">
+      <div class="backdrop">
   <div class="order-modal">
-    <button type="button" class="modal-close-btn">
-        ✕
-    </button>
+    <button type="button" class="modal-close-btn">✕</button>
     <p class="modal-title">Замовити</p>
     <form class="modal-order-form">
       <div class="modal-field">
@@ -317,8 +344,8 @@
         <input
           type="text"
           class="modal-input"
-          name="phone"
-          id="phone"
+          name="user-phone"
+          id="user-phone"
           placeholder="38 099 123 22 11"
         />
       </div>
@@ -335,7 +362,6 @@
   </div>
 </div>
 
-
     </main>
 
     <footer class="footer">
@@ -345,16 +371,13 @@
         <use href="/js-project-group-04/assets/sprite-CQvPgL9R.svg#company-logo"></use>
       </svg>
     </a>
-
     <p class="footer-descr">© 2025 Relume. Всі права захищені.</p>
-
     <nav class="footer-nav">
       <a class="footer-nav-link" href="#furniture-list">Наші меблі</a>
       <a class="footer-nav-link" href="#about-us">Про нас</a>
       <a class="footer-nav-link" href="#faq-section">Часті питання</a>
       <a class="footer-nav-link" href="#feedbacks-section-id">Відгуки</a>
     </nav>
-
     <ul class="social-media-list">
       <li class="social-media-list-item">
         <a
