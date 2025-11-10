@@ -1,8 +1,10 @@
+// ===============================
 // src/js/modal.js
+// ===============================
+
 import 'izitoast/dist/css/iziToast.min.css';
 import iziToast from 'izitoast';
 import axios from 'axios';
-import { hideLoader, showLoader } from './helpers';
 
 axios.defaults.baseURL = 'https://furniture-store-v2.b.goit.study/api';
 
@@ -12,7 +14,7 @@ const productModal = document.querySelector('.modal-window');
 let escHandler = null;
 let backdropHandler = null;
 
-// зірочки
+// Зірочки рейтингу
 function stars(rate = 0) {
   const full = Math.floor(rate);
   const half = rate % 1 >= 0.5 ? 1 : 0;
@@ -52,12 +54,11 @@ function getRefs(root) {
 }
 
 export async function openProductModal(id) {
-  showLoader();
   try {
     // показати модалку
-      document.body.classList.add('modal-open');
-      productModal.classList.remove('visuallyhidden');
-      productModal.removeAttribute('aria-hidden');
+    document.body.classList.add('modal-open');
+    productModal.classList.remove('visuallyhidden');
+
     const { data } = await axios.get(`/furnitures/${id}`);
     const {
       dialog,
@@ -88,6 +89,7 @@ export async function openProductModal(id) {
       thumbsWrap.innerHTML = thumbs
         .map(src => `<img class="modal-thumb" src="${src}" alt="${data?.name || 'thumb'}">`)
         .join('');
+
       // перемикання картинок
       if (!thumbsWrap.dataset.bound) {
         thumbsWrap.addEventListener('click', e => {
@@ -135,50 +137,53 @@ export async function openProductModal(id) {
     };
     document.addEventListener('keydown', escHandler);
 
+    // перехід до замовлення
     if (orderBtn) {
       orderBtn.onclick = () => {
         const checked = productModal.querySelector('input[name="color"]:checked');
         const color = checked ? checked.value : null;
-        openOrderModal(id, color);
+        openOrderModal(id, null, color);
         closeProductModal();
       };
     }
 
-    // фокус
     if (dialog) {
       dialog.setAttribute('tabindex', '-1');
       dialog.focus({ preventScroll: true });
     }
   } catch (e) {
+    console.error('❌ Помилка завантаження товару', e);
     closeProductModal();
-    showError(e);
-    closeModal();
-  } finally {
-    hideLoader();
+    iziToast.error({
+      title: 'Помилка',
+      message: 'Не вдалося завантажити товар.',
+      position: 'topRight',
+    });
   }
 }
 
 function closeProductModal() {
-  const active = document.activeElement;
-  if (active && productModal.contains(active)) active.blur();
-
   productModal.classList.add('visuallyhidden');
-  productModal.setAttribute('aria-hidden', 'true');   // <— ставимо aria-hidden
   document.body.classList.remove('modal-open');
-
-  if (escHandler) { document.removeEventListener('keydown', escHandler); escHandler = null; }
-  if (backdropHandler) { productModal.removeEventListener('mousedown', backdropHandler); backdropHandler = null; }
+  if (escHandler) {
+    document.removeEventListener('keydown', escHandler);
+    escHandler = null;
+  }
+  if (backdropHandler) {
+    productModal.removeEventListener('mousedown', backdropHandler);
+    backdropHandler = null;
+  }
 }
 
 // ====== Друга модалка (замовлення) ======
 const backdropOrderModal = document.querySelector('.backdrop');
-const orderDialog = document.querySelector('.order-modal');
-const closeOrderBtn = document.querySelector('.modal-close-btn');
-const submitBtn = document.querySelector('.modal-submit-btn');
-const orderForm = document.querySelector('.modal-order-form');
+const modalOrder = document.querySelector('.order-modal');
+const closeOrderBtn = modalOrder.querySelector('.modal-close-btn'); // ✅ тепер шукає кнопку саме в цій модалці
+const submitBtn = modalOrder.querySelector('.modal-submit-btn');
+const orderForm = modalOrder.querySelector('.modal-order-form');
 
-let currentModelId = null; 
-let currentColor = null;   
+let currentModelId = null;
+let currentColor = null;
 
 function lockBody() {
   document.body.classList.add('modal-open');
@@ -191,16 +196,14 @@ function handleOrderEsc(e) {
   if (e.key === 'Escape') closeOrderModal();
 }
 
-export async function openOrderModal(modelId, color) {
+export async function openOrderModal(modelId, marker, color) {
   currentModelId = modelId ?? null;
   currentColor = color ?? null;
 
   backdropOrderModal.classList.add('is-open');
-  backdropOrderModal.removeAttribute('aria-hidden');   // <—
   lockBody();
 
   setTimeout(() => {
-    // фокус у перше поле
     orderForm?.elements['user-name']?.focus();
   }, 10);
 
@@ -208,23 +211,22 @@ export async function openOrderModal(modelId, color) {
 }
 
 export async function closeOrderModal() {
-
-  const active = document.activeElement;
-  if (active && backdropOrderModal.contains(active)) active.blur();
-
   backdropOrderModal.classList.remove('is-open');
-  backdropOrderModal.setAttribute('aria-hidden', 'true'); // <—
   unlockBody();
   window.removeEventListener('keydown', handleOrderEsc);
 }
 
-closeOrderBtn?.addEventListener('click', () => closeOrderModal());
+// Закриття ✕
+closeOrderBtn?.addEventListener('click', async () => {
+  await closeOrderModal();
+});
 
+// Закриття по бекдропу
 backdropOrderModal?.addEventListener('mousedown', e => {
   if (e.target === backdropOrderModal) closeOrderModal();
 });
 
-// сабміт
+// Сабміт форми
 orderForm?.addEventListener('submit', async e => {
   e.preventDefault();
 
@@ -241,11 +243,10 @@ orderForm?.addEventListener('submit', async e => {
     return;
   }
 
-  // обов'язкові для бекенду:
   if (!currentModelId) {
     iziToast.warning({
       title: 'Увага',
-      message: 'Оберіть товар (відкрийте картку і натисніть “Перейти до замовлення”).',
+      message: 'Оберіть товар перед замовленням.',
       position: 'topRight',
     });
     return;
@@ -253,7 +254,7 @@ orderForm?.addEventListener('submit', async e => {
   if (!currentColor) {
     iziToast.warning({
       title: 'Увага',
-      message: 'Оберіть колір у картці товару перед замовленням.',
+      message: 'Оберіть колір товару перед замовленням.',
       position: 'topRight',
     });
     return;
@@ -274,8 +275,8 @@ orderForm?.addEventListener('submit', async e => {
     name,
     phone: clearPhone,
     comment,
-    modelId: currentModelId, 
-    color: currentColor,     
+    modelId: currentModelId,
+    color: currentColor,
   };
 
   submitBtn.disabled = true;
@@ -291,7 +292,6 @@ orderForm?.addEventListener('submit', async e => {
     });
 
     orderForm.reset();
-    // очистимо LS, якщо зберігали поля
     orderForm.querySelectorAll('input, textarea').forEach(f => {
       localStorage.removeItem(f.name);
     });
@@ -306,13 +306,12 @@ orderForm?.addEventListener('submit', async e => {
       message: msg,
       position: 'topRight',
     });
-    // форму не закриваємо
   } finally {
     submitBtn.disabled = false;
   }
 });
 
-// збереження полів у localStorage
+// Збереження полів у localStorage
 function onFieldInput(e) {
   const f = e.target;
   if (!f?.name) return;
@@ -323,4 +322,3 @@ orderForm?.querySelectorAll('input, textarea').forEach(f => {
   const saved = localStorage.getItem(f.name);
   if (saved) f.value = saved;
 });
-
