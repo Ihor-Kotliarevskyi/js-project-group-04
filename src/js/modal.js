@@ -2,6 +2,7 @@
 import 'izitoast/dist/css/iziToast.min.css';
 import iziToast from 'izitoast';
 import axios from 'axios';
+import { hideLoader, showLoader } from './helpers';
 
 axios.defaults.baseURL = 'https://furniture-store-v2.b.goit.study/api';
 
@@ -51,6 +52,7 @@ function getRefs(root) {
 }
 
 export async function openProductModal(id) {
+  showLoader();
   try {
     // показати модалку
       document.body.classList.add('modal-open');
@@ -148,13 +150,11 @@ export async function openProductModal(id) {
       dialog.focus({ preventScroll: true });
     }
   } catch (e) {
-    console.error('❌ Помилка завантаження товару', e);
     closeProductModal();
-    iziToast.error({
-      title: 'Помилка',
-      message: 'Не вдалося завантажити товар.',
-      position: 'topRight',
-    });
+    showError(e);
+    closeModal();
+  } finally {
+    hideLoader();
   }
 }
 
