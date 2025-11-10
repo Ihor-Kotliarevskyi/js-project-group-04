@@ -1,3 +1,5 @@
+const modalOrder = document.querySelector('.order-modal');
+
 const refs = {
   categories: document.querySelector('#categories'),
   products: document.querySelector('#products'),
@@ -9,10 +11,10 @@ const refs = {
   feedbackSwiper: document.querySelector('.feedback-swiper'),
   loader: document.querySelector('.backdrope-loader'),
   backdropOrderModal: document.querySelector('.backdrop'),
-  modalOrder: document.querySelector('.order-modal'),
-  closeOrderBtn: document.querySelector('.modal-close-btn'),
-  submitBtn: document.querySelector('.modal-submit-btn'),
-  orderForm: document.querySelector('.modal-order-form'),
+  modalOrder,
+  closeOrderBtn: modalOrder.querySelector('.modal-close-btn'),
+  submitBtn: modalOrder.querySelector('.modal-submit-btn'),
+  orderForm: modalOrder.querySelector('.modal-order-form'),
 };
 
 export default refs;

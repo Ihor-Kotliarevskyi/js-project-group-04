@@ -6,6 +6,7 @@ import {
   onProductsClick,
 } from './js/handlers.js';
 import { initFeedbacks } from './js/feedback.js';
+import './js/burger-menu.js';
 
 window.addEventListener('load', () => {
   requestAnimationFrame(() => {

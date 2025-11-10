@@ -10,14 +10,25 @@
       </p>
     </div>
     <div class="about-picture">
-       <picture  class="about-img" >
-            <source media="(min-width: 1440px)" srcset="/img/about_pc.jpg 1x, /img/about_pc@2x.jpg 2x">
-        
-           <source media="(min-width: 768px)" srcset="/img/about_tab.jpg 1x, /img/about_tab@2x.jpg 2x">
-
-           <source media="(max-width: 375px)" srcset="/img/about_mob.jpg 1x, /img/about_mob@2x.jpg 2x">
-           <img src="img/about_tab.jpg 1x"  srcset="img/about_mob@2x.jpg 2x" alt="About us section image" />
-        </picture> 
+      <picture class="about-img">
+        <source
+          media="(min-width: 1440px)"
+          srcset="/img/about_pc.jpg 1x, /img/about_pc@2x.jpg 2x"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="/img/about_tab.jpg 1x, /img/about_tab@2x.jpg 2x"
+        />
+        <source
+          media="(max-width: 767px)"
+          srcset="/img/about_mob.jpg 1x, /img/about_mob@2x.jpg 2x"
+        />
+        <img
+          src="/img/about_mob.jpg"
+          srcset="/img/about_mob@2x.jpg 2x"
+          alt="About us section image"
+        />
+      </picture>
     </div>
   </div>
 </section>

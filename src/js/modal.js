@@ -217,7 +217,7 @@ refs.orderForm?.addEventListener('submit', async e => {
   e.preventDefault();
 
   const name = refs.orderForm.elements['user-name']?.value.trim();
-  const phone = refs.orderForm.elements['phone']?.value.trim();
+  const phone = refs.orderForm.elements['user-phone']?.value.trim();
   const comment = refs.orderForm.elements['user-comment']?.value.trim() || '';
 
   if (!name || !phone) {
