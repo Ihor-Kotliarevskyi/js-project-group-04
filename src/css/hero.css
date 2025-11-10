@@ -1,11 +1,10 @@
-
 .herobaner {
   display: flex;
   width: 100%;
   min-height: 100%;
   background-image: image-set(
-    url("../public/hero_vel@1x.webp") 1x,
-    url("../public/hero_vel@2x.webp") 2x
+    url("/hero_vel@1x.webp") 1x,
+    url("/hero_vel@2x.webp") 2x
   );
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,8 +15,8 @@
 @media (min-width:768px) and (max-width:1439px) {
   .herobaner {
     background-image: image-set(
-      url("../public/hero_lap@1x.webp") 1x,
-      url("../public/hero_lap@2x.webp") 2x
+      url("/hero_lap@1x.webp") 1x,
+      url("/hero_lap@2x.webp") 2x
     );
   }
 }
@@ -25,8 +24,8 @@
 @media (max-width:767px) {
   .herobaner {
     background-image: image-set(
-      url("../public/hero_mob@1x.webp") 1x,
-      url("../public/hero_mob@2x.webp") 2x
+      url("/hero_mob@1x.webp") 1x,
+      url("/hero_mob@2x.webp") 2x
     );
   }
 }
@@ -35,6 +34,7 @@
   width: 100%;
   max-width: 1312px;
   margin: 0 auto;
+  margin-top: 72px;
   padding: 92px 20px;
   box-sizing: border-box;
 }
@@ -127,4 +127,3 @@
   text-align: center;
   opacity: 0.6;
 }
-
