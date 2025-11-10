@@ -3,14 +3,15 @@
   width: 1440px;
   height: 100%;
   background-image: image-set(
-    url('../public/hero_vel@1x.webp') 1x,
-    url('../public/hero_vel@2x.webp') 2x
+    url('/hero_vel@1x.webp') 1x,
+    url('/hero_vel@2x.webp') 2x
   );
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   color: #fff;
   margin: 0 auto;
+  margin-top: 72px;
 }
 
 @media (min-width: 768px) and (max-width: 1439px) {
