@@ -6,9 +6,10 @@ import 'izitoast/dist/css/iziToast.min.css';
 import iziToast from 'izitoast';
 import axios from 'axios';
 
+
 axios.defaults.baseURL = 'https://furniture-store-v2.b.goit.study/api';
 
-// ====== Перша модалка (деталі товару) ======
+// ===== Перша модалка (деталі товару) =====
 const productModal = document.querySelector('.modal-window');
 
 let escHandler = null;
@@ -21,7 +22,8 @@ function stars(rate = 0) {
   let out = '';
   for (let i = 0; i < full; i++) out += '<span class="star star-full">★</span>';
   if (half) out += '<span class="star star-half">★</span>';
-  for (let i = full + half; i < 5; i++) out += '<span class="star star-empty">★</span>';
+  for (let i = full + half; i < 5; i++)
+    out += '<span class="star star-empty">★</span>';
   return out;
 }
 
@@ -55,7 +57,6 @@ function getRefs(root) {
 
 export async function openProductModal(id) {
   try {
-    // показати модалку
     document.body.classList.add('modal-open');
     productModal.classList.remove('visuallyhidden');
 
@@ -75,9 +76,11 @@ export async function openProductModal(id) {
       orderBtn,
     } = getRefs(productModal);
 
-    // картинки
+    // Картинки
     const imgs = normalizeImages(data.images || data.image || []);
-    const safeImgs = imgs.length ? imgs : ['https://via.placeholder.com/640x360?text=No+Image'];
+    const safeImgs = imgs.length
+      ? imgs
+      : ['https://via.placeholder.com/640x360?text=No+Image'];
     const main = safeImgs[0];
     const thumbs = safeImgs.slice(1, 3);
 
@@ -85,12 +88,17 @@ export async function openProductModal(id) {
       mainImg.src = main;
       mainImg.alt = data?.name || 'photo';
     }
+
     if (thumbsWrap) {
       thumbsWrap.innerHTML = thumbs
-        .map(src => `<img class="modal-thumb" src="${src}" alt="${data?.name || 'thumb'}">`)
+        .map(
+          src =>
+            `<img class="modal-thumb" src="${src}" alt="${
+              data?.name || 'thumb'
+            }">`
+        )
         .join('');
 
-      // перемикання картинок
       if (!thumbsWrap.dataset.bound) {
         thumbsWrap.addEventListener('click', e => {
           const img = e.target.closest('.modal-thumb');
@@ -103,7 +111,7 @@ export async function openProductModal(id) {
       }
     }
 
-    // текстові поля
+    // Текстові дані
     if (titleEl) titleEl.textContent = data?.name || '';
     if (catEl) catEl.textContent = data?.category?.name || 'Без категорії';
     if (priceEl) priceEl.textContent = `${data?.price ?? 0} грн`;
@@ -111,7 +119,7 @@ export async function openProductModal(id) {
     if (descEl) descEl.textContent = data?.description || 'Опис відсутній';
     if (sizeEl) sizeEl.textContent = `Розміри: ${data?.sizes || '—'}`;
 
-    // кольори
+    // Кольори
     if (colorsWrap) {
       const colors = Array.isArray(data?.color) ? data.color : [];
       colorsWrap.innerHTML = colors
@@ -124,7 +132,7 @@ export async function openProductModal(id) {
         .join('');
     }
 
-    // закриття
+    // Закриття
     if (btnClose) btnClose.onclick = closeProductModal;
 
     backdropHandler = e => {
@@ -137,10 +145,12 @@ export async function openProductModal(id) {
     };
     document.addEventListener('keydown', escHandler);
 
-    // перехід до замовлення
+    // Кнопка "Перейти до замовлення"
     if (orderBtn) {
       orderBtn.onclick = () => {
-        const checked = productModal.querySelector('input[name="color"]:checked');
+        const checked = productModal.querySelector(
+          'input[name="color"]:checked'
+        );
         const color = checked ? checked.value : null;
         openOrderModal(id, null, color);
         closeProductModal();
@@ -155,8 +165,8 @@ export async function openProductModal(id) {
     console.error('❌ Помилка завантаження товару', e);
     closeProductModal();
     iziToast.error({
-      title: 'Помилка',
-      message: 'Не вдалося завантажити товар.',
+      title: 'Error',
+      message: 'Failed to load product data.',
       position: 'topRight',
     });
   }
@@ -175,22 +185,20 @@ function closeProductModal() {
   }
 }
 
-// ====== Друга модалка (замовлення) ======
+// ===== Друга модалка (замовлення) =====
+// Елементи
 const backdropOrderModal = document.querySelector('.backdrop');
 const modalOrder = document.querySelector('.order-modal');
-const closeOrderBtn = modalOrder.querySelector('.modal-close-btn'); // ✅ тепер шукає кнопку саме в цій модалці
+const closeOrderBtn = modalOrder.querySelector('.modal-close-btn'); 
 const submitBtn = modalOrder.querySelector('.modal-submit-btn');
 const orderForm = modalOrder.querySelector('.modal-order-form');
 
+closeOrderBtn.addEventListener('click', async () => {
+  await closeOrderModal();
+});
+
 let currentModelId = null;
 let currentColor = null;
-
-function lockBody() {
-  document.body.classList.add('modal-open');
-}
-function unlockBody() {
-  document.body.classList.remove('modal-open');
-}
 
 function handleOrderEsc(e) {
   if (e.key === 'Escape') closeOrderModal();
@@ -201,27 +209,23 @@ export async function openOrderModal(modelId, marker, color) {
   currentColor = color ?? null;
 
   backdropOrderModal.classList.add('is-open');
-  lockBody();
-
-  setTimeout(() => {
-    orderForm?.elements['user-name']?.focus();
-  }, 10);
-
+  document.body.classList.add('modal-open');
   window.addEventListener('keydown', handleOrderEsc);
+
+  // Відновлення полів з localStorage
+  orderForm.querySelectorAll('input, textarea').forEach(f => {
+    const saved = localStorage.getItem(f.name);
+    if (saved) f.value = saved;
+  });
 }
 
 export async function closeOrderModal() {
   backdropOrderModal.classList.remove('is-open');
-  unlockBody();
+  document.body.classList.remove('modal-open');
   window.removeEventListener('keydown', handleOrderEsc);
 }
 
-// Закриття ✕
-closeOrderBtn?.addEventListener('click', async () => {
-  await closeOrderModal();
-});
-
-// Закриття по бекдропу
+closeOrderBtn?.addEventListener('click', () => closeOrderModal());
 backdropOrderModal?.addEventListener('mousedown', e => {
   if (e.target === backdropOrderModal) closeOrderModal();
 });
@@ -230,8 +234,8 @@ backdropOrderModal?.addEventListener('mousedown', e => {
 orderForm?.addEventListener('submit', async e => {
   e.preventDefault();
 
-  const name = orderForm.elements['user-name']?.value.trim() || '';
-  const phone = orderForm.elements['phone']?.value.trim() || '';
+  const name = orderForm.elements['user-name']?.value.trim();
+  const phone = orderForm.elements['phone']?.value.trim();
   const comment = orderForm.elements['user-comment']?.value.trim() || '';
 
   if (!name || !phone) {
@@ -247,14 +251,6 @@ orderForm?.addEventListener('submit', async e => {
     iziToast.warning({
       title: 'Увага',
       message: 'Оберіть товар перед замовленням.',
-      position: 'topRight',
-    });
-    return;
-  }
-  if (!currentColor) {
-    iziToast.warning({
-      title: 'Увага',
-      message: 'Оберіть колір товару перед замовленням.',
       position: 'topRight',
     });
     return;
@@ -283,19 +279,16 @@ orderForm?.addEventListener('submit', async e => {
 
   try {
     const res = await axios.post('/orders', payload);
-
     iziToast.success({
       title: 'Успішно',
       message: 'Ваше замовлення відправлено!',
       position: 'topRight',
       timeout: 3000,
     });
-
     orderForm.reset();
-    orderForm.querySelectorAll('input, textarea').forEach(f => {
-      localStorage.removeItem(f.name);
-    });
-
+    orderForm.querySelectorAll('input, textarea').forEach(f =>
+      localStorage.removeItem(f.name)
+    );
     closeOrderModal();
   } catch (error) {
     const msg =
@@ -312,13 +305,9 @@ orderForm?.addEventListener('submit', async e => {
 });
 
 // Збереження полів у localStorage
-function onFieldInput(e) {
-  const f = e.target;
-  if (!f?.name) return;
-  localStorage.setItem(f.name, f.value);
-}
 orderForm?.querySelectorAll('input, textarea').forEach(f => {
-  f.addEventListener('input', onFieldInput);
-  const saved = localStorage.getItem(f.name);
-  if (saved) f.value = saved;
+  f.addEventListener('input', e => {
+    const field = e.target;
+    localStorage.setItem(field.name, field.value);
+  });
 });
