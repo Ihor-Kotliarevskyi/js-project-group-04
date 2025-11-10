@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const openMenuBtn = document.querySelector('[data-menu-open]');
   const menu = document.querySelector('.burger-menu');
   const headerNav = document.querySelector('.header-nav');
+  const burgerMenuHeaderButton = document.querySelector(
+    '.burger-menu-header-button'
+  );
   const body = document.body;
 
   if (!openMenuBtn || !menu || !headerNav) {
@@ -36,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   closeBtn.addEventListener('click', closeMenu);
+  burgerMenuHeaderButton.addEventListener('click', closeMenu);
 
   const menuLinks = menu.querySelectorAll('.nav-link');
   menuLinks.forEach(link => link.addEventListener('click', closeMenu));
