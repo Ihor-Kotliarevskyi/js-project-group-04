@@ -20,7 +20,7 @@ import{i as N,A as Z,R as ee,a as f,S as te,N as re,P as ae}from"./assets/vendor
           <p class="products-price">${s} грн</p>
         </div>
         <button class="products-details-btn" type="button">Детальніше</button>
-      </li>`).join("");r.products.insertAdjacentHTML("beforeend",t)}function ie(){r.products.innerHTML=""}new Z(".accordion-container",{duration:300,showMultiple:!1,beforeOpen:e=>{const t=e.querySelector(".ac-icon");t&&(t.style.transform="rotate(180deg)")},beforeClose:e=>{const t=e.querySelector(".ac-icon");t&&(t.style.transform="rotate(0deg)")}});function ce(e){const t=e.rate??0,n=ne(t);return`
+      </li>`).join("");r.products.insertAdjacentHTML("beforeend",t)}function ie(){r.products.innerHTML=""}new Z(".accordion-container",{duration:300,showMultiple:!1,beforeOpen:e=>{const t=e.querySelector(".ac-icon");t&&(t.style.transform="translateY(-50%) rotate(180deg)")},beforeClose:e=>{const t=e.querySelector(".ac-icon");t&&(t.style.transform="translateY(-50%) rotate(0deg)")}});function ce(e){const t=e.rate??0,n=ne(t);return`
     <li class="swiper-slide feedback-card-item">
       <div class="feedback-rating" data-score="${n}" aria-label="Рейтинг ${n} з 5"></div>
       <p class="feedback-text">${e.descr||""}</p>
