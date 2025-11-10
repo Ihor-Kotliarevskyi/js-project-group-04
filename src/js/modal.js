@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import axios from 'axios';
+import { hideLoader, showLoader } from './helpers';
 
 axios.defaults.baseURL = 'https://furniture-store-v2.b.goit.study/api';
 const modalWindow = document.querySelector('.modal-window');
@@ -43,6 +44,7 @@ function getRefs() {
 }
 
 export async function openProductModal(id) {
+  showLoader();
   try {
     // відкрити модалку
     document.body.classList.add('modal-open');
@@ -158,6 +160,8 @@ export async function openProductModal(id) {
   } catch (e) {
     console.error('❌ Помилка завантаження товару', e);
     closeModal();
+  } finally {
+    hideLoader();
   }
 }
 
