@@ -70,10 +70,6 @@
 }
 
 .burger-menu-navbar-btn-close {
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -87,13 +83,13 @@
   transition: transform 0.2s ease;
 }
 
-.burger-menu-navbar-btn-close:hover {
+/* .burger-menu-navbar-btn-close:hover {
   transform: rotate(135deg) scale(1.06);
-}
+} */
 
-.burger-menu-navbar-btn-close:active {
+/* .burger-menu-navbar-btn-close:active {
   animation: btn-pop 0.18s ease-out;
-}
+} */
 
 .burger-menu-navbar-btn-close:focus-visible {
   outline: none;
