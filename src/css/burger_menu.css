@@ -209,4 +209,8 @@ body.no-scroll {
   .burger-menu-navbar-btn-close {
     display: none !important;
   }
+
+  body.no-scroll {
+    overflow: auto;
+  }
 }
