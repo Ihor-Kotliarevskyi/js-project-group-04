@@ -175,9 +175,6 @@
   }
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
 
 body.no-scroll {
   overflow: hidden;
@@ -202,4 +199,14 @@ body.no-scroll {
 
 .burger-menu-navbar-btn-close:hover svg {
   transform: rotate(90deg);
+}
+
+@media screen and (min-width: 1440px) {
+  .burger-button {
+    display: none !important;
+  }
+
+  .burger-menu-navbar-btn-close {
+    display: none !important;
+  }
 }

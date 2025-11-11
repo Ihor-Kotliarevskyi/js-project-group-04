@@ -70,10 +70,6 @@
     display: flex;
   }
 
-  .burger-button {
-    display: none;
-  }
-
   .nav-wrapper {
     display: flex;
     align-items: center;
@@ -131,9 +127,5 @@
 
   .header .nav-list-item:hover::after {
     width: 100%;
-  }
-
-  .burger-menu-navbar-btn-close svg {
-    display: none;
   }
 }
