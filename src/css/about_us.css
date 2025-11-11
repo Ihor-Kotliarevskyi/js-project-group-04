@@ -9,8 +9,11 @@
   align-items: center;
   gap: 24px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin: 0 auto;
   padding: 32px 20px;
+  box-sizing: border-box;
 }
 
 .about-content {
