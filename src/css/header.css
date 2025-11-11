@@ -70,10 +70,6 @@
     display: flex;
   }
 
-  .burger-button {
-    display: none;
-  }
-
   .nav-wrapper {
     display: flex;
     align-items: center;
@@ -116,6 +112,12 @@
     padding-bottom: 1px;
     display: flex;
     justify-content: center;
+    transition: color 250ms ease-in-out;
+  }
+
+  .header .nav-list-item:hover,
+  .header .nav-list-item:focus {
+    color: #6b0609;
   }
 
   .header .nav-list-item::after {
@@ -129,11 +131,9 @@
     transition: width 250ms ease-in-out;
   }
 
-  .header .nav-list-item:hover::after {
+  .header .nav-list-item:hover::after,
+  .header .nav-list-item:focus::after {
     width: 100%;
   }
-
-  .burger-menu-navbar-btn-close svg {
-    display: none;
-  }
 }
+

@@ -70,10 +70,6 @@
 }
 
 .burger-menu-navbar-btn-close {
-  top: 16px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -87,13 +83,13 @@
   transition: transform 0.2s ease;
 }
 
-.burger-menu-navbar-btn-close:hover {
+/* .burger-menu-navbar-btn-close:hover {
   transform: rotate(135deg) scale(1.06);
-}
+} */
 
-.burger-menu-navbar-btn-close:active {
+/* .burger-menu-navbar-btn-close:active {
   animation: btn-pop 0.18s ease-out;
-}
+} */
 
 .burger-menu-navbar-btn-close:focus-visible {
   outline: none;
@@ -175,13 +171,9 @@
   }
 }
 
-body.no-scroll {
-  overflow: hidden;
-}
 
 body.no-scroll {
   overflow: hidden;
-  height: 100vh;
 }
 
 .burger-menu-navbar-btn-close {
@@ -203,4 +195,18 @@ body.no-scroll {
 
 .burger-menu-navbar-btn-close:hover svg {
   transform: rotate(90deg);
+}
+
+@media screen and (min-width: 1440px) {
+  .burger-button {
+    display: none !important;
+  }
+
+  .burger-menu-navbar-btn-close {
+    display: none !important;
+  }
+
+  body.no-scroll {
+    overflow: auto;
+  }
 }
