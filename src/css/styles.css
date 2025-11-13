@@ -24,3 +24,6 @@
 /* Modal style */
 @import url('./furniture_details_modal.css');
 @import url('./order_modal.css');
+
+/* Theme */
+@import url('./theme.css');

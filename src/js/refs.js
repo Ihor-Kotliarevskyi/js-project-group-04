@@ -48,6 +48,9 @@ const refs = {
   burgerMenuHeaderNav: document.querySelector('.header-nav'),
   burgerMenuHeaderButton: document.querySelector('.burger-menu-header-button'),
   body: document.body,
+  
+  // Theme Toggle
+  themeToggle: document.querySelector('[data-theme-toggle]'),
 };
 
 export default refs;

@@ -6,9 +6,7 @@ let currentModelId = null;
 let currentColor = null;
 
 function clearFormStorage() {
-  refs.orderForm
-    .querySelectorAll('input, textarea')
-    .forEach(field => localStorage.removeItem(field.name));
+  localStorage.removeItem('order-form');
 }
 
 function validateForm(name, phone) {
@@ -22,21 +20,38 @@ function validateForm(name, phone) {
     return false;
   }
 
-  const clearPhone = phone.replace(/[^\d+]/g, '');
-  const phonePattern = /^\+?\d{10,12}$/;
+  // Видаляємо всі символи, крім цифр та "+"
+  const cleanPhone = phone.replace(/[^\d+]/g, '');
+  
+  // Перевіряємо формат: опціональний "+" на початку, потім від 9 до 15 цифр
+  // Дозволяємо формати:
+  // - +380123456789 (з + та країнним кодом)
+  // - 380123456789 (без +, але з країнним кодом)
+  // - 0123456789 (локальний формат)
+  // - +1234567890 (міжнародний формат)
+  const phonePattern = /^\+?\d{9,15}$/;
 
-  if (!phonePattern.test(clearPhone)) {
-    showWarning('Enter a valid phone number.');
+  if (!phonePattern.test(cleanPhone)) {
+    showWarning('Enter a valid phone number (9-15 digits, optional + at start).');
     return false;
   }
 
-  return clearPhone;
+  // Повертаємо номер як є (з "+" якщо він був)
+  return cleanPhone;
 }
 
 export function setupOrderFormStorage() {
   refs.orderForm.querySelectorAll('input, textarea').forEach(field => {
-    field.addEventListener('input', e => {
-      localStorage.setItem(e.target.name, e.target.value);
+    field.addEventListener('input', () => {
+      // Збираємо всі дані форми в один об'єкт
+      const formData = {};
+      refs.orderForm.querySelectorAll('input, textarea').forEach(f => {
+        if (f.name) {
+          formData[f.name] = f.value;
+        }
+      });
+      // Зберігаємо весь об'єкт під ключем "order-form"
+      localStorage.setItem('order-form', JSON.stringify(formData));
     });
   });
 }
@@ -95,11 +110,18 @@ export async function closeOrderModal() {
 }
 
 export function restoreFormFromStorage() {
-  refs.orderForm.querySelectorAll('input, textarea').forEach(field => {
-    const saved = localStorage.getItem(field.name);
-    if (saved) {
-      field.value = saved;
+  const savedData = localStorage.getItem('order-form');
+  if (savedData) {
+    try {
+      const formData = JSON.parse(savedData);
+      refs.orderForm.querySelectorAll('input, textarea').forEach(field => {
+        if (field.name && formData[field.name] !== undefined) {
+          field.value = formData[field.name];
+        }
+      });
+    } catch (error) {
+      console.error('Помилка при відновленні даних форми:', error);
     }
-  });
+  }
 }
 

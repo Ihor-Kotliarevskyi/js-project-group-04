@@ -19,6 +19,7 @@ import {
 import { initFeedbacks } from './feedback';
 import { closeProductModal } from './product-modal';
 import { closeOrderModal, handleOrderFormSubmit, setupOrderFormStorage } from './order-modal';
+import { initTheme, toggleTheme } from './theme';
 
 // ===== Глобальні слухачі =====
 
@@ -27,6 +28,7 @@ window.addEventListener('load', handleWindowLoad);
 
 // Ініціалізація при завантаженні DOM
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   initialHome();
   initFeedbacks();
   initBurgerMenu();
@@ -35,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoadMoreListeners();
   initOrderModalStaticListeners();
   initOrderFormListeners();
+  initThemeToggle();
 });
 
 // ===== Слухачі для категорій =====
@@ -79,11 +82,17 @@ function initBurgerMenu() {
   closeBtn.classList.add('burger-menu-navbar-btn-close');
   closeBtn.setAttribute('type', 'button');
   closeBtn.setAttribute('data-navbar-close', '');
-  closeBtn.innerHTML = `
-    <svg class="burger-button-icon" width="32" height="32">
-      <use href="/img/sprite.svg#x"></use>
-    </svg>
-  `;
+  
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('burger-button-icon');
+  svg.setAttribute('width', '32');
+  svg.setAttribute('height', '32');
+  
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/img/sprite.svg#x');
+  
+  svg.appendChild(use);
+  closeBtn.appendChild(svg);
 
   openMenuBtn.insertAdjacentElement('beforebegin', closeBtn);
 
@@ -192,5 +201,10 @@ function initOrderFormListeners() {
 
   // Відправка форми
   refs.orderForm?.addEventListener('submit', handleOrderFormSubmit);
+}
+
+// ===== Слухачі для переключення теми =====
+function initThemeToggle() {
+  refs.themeToggle?.addEventListener('click', toggleTheme);
 }
 

@@ -4,14 +4,32 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #242424;
-  background-color: rgba(255, 255, 255, 0.87);
+  /* Light theme (default) */
+  --bg-color: rgba(255, 255, 255, 0.87);
+  --text-color: #242424;
+  --header-bg: white;
+  --logo-fill: black;
+  --accent-color: #6b0609;
+  --border-color: rgba(8, 12, 9, 0.15);
+
+  color: var(--text-color);
+  background-color: var(--bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --header-bg: #2a2a2a;
+  --logo-fill: white;
+  --accent-color: #8b0d11;
+  --border-color: rgba(255, 255, 255, 0.1);
 }
 
 body {

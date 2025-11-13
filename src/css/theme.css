@@ -1,0 +1,275 @@
+/* Theme toggle button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 250ms ease-in-out;
+  margin-left: 16px;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] .theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-toggle-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--text-color);
+  fill: none;
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(15deg);
+}
+
+.theme-icon-sun,
+.theme-icon-moon {
+  position: absolute;
+}
+
+/* Dark theme specific styles */
+[data-theme='dark'] body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .header-container,
+[data-theme='dark'] .header-container::before {
+  background-color: var(--header-bg);
+}
+
+[data-theme='dark'] .site-icon {
+  fill: var(--logo-fill);
+}
+
+[data-theme='dark'] .nav-link {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .header-button {
+  background: var(--accent-color);
+  color: white;
+}
+
+[data-theme='dark'] .burger-button-icon {
+  fill: var(--text-color);
+}
+
+/* Dark theme для всіх секцій */
+[data-theme='dark'] .furniture-list {
+  background: var(--bg-color);
+}
+
+[data-theme='dark'] .furniture-list-title,
+[data-theme='dark'] .furniture-list-description,
+[data-theme='dark'] .products-title,
+[data-theme='dark'] .products-price,
+[data-theme='dark'] .products-details-btn {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .products-details-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--border-color);
+}
+
+[data-theme='dark'] .categories-item--active {
+  border-color: var(--accent-color);
+}
+
+[data-theme='dark'] .load-more-btn {
+  background: var(--accent-color);
+}
+
+[data-theme='dark'] .about-us {
+  background: rgba(42, 42, 42, 0.5);
+}
+
+[data-theme='dark'] .about-title,
+[data-theme='dark'] .about-text {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .faq h2,
+[data-theme='dark'] .ac-trigger,
+[data-theme='dark'] .ac-text {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .ac-trigger,
+[data-theme='dark'] .ac-panel {
+  background-color: var(--header-bg);
+}
+
+[data-theme='dark'] .ac {
+  border-bottom-color: var(--border-color);
+}
+
+[data-theme='dark'] .ac:first-child {
+  border-top-color: var(--border-color);
+}
+
+[data-theme='dark'] .feedback {
+  background-color: var(--bg-color);
+}
+
+[data-theme='dark'] .feedback-section-title,
+[data-theme='dark'] .feedbacks-section-description,
+[data-theme='dark'] .feedback-text,
+[data-theme='dark'] .feedback-author {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .feedback-card-item {
+  background-color: var(--header-bg);
+}
+
+[data-theme='dark'] .feedback-pagination-dot {
+  background-color: var(--border-color);
+}
+
+[data-theme='dark'] .feedback-pagination-dot.active {
+  background-color: var(--text-color);
+}
+
+[data-theme='dark'] .feedback-nav-button {
+  background-color: var(--header-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme='dark'] .feedback-rating i::before {
+  -webkit-text-stroke: 1.5px var(--text-color);
+}
+
+[data-theme='dark'] .feedback-rating i.feedback-star-on::before {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .burger-menu {
+  background-color: var(--header-bg);
+}
+
+[data-theme='dark'] .burger-menu::before {
+  background-color: var(--header-bg);
+}
+
+@media screen and (min-width: 768px) {
+  [data-theme='dark'] .burger-menu-header-nav {
+    background-color: var(--header-bg);
+  }
+}
+
+[data-theme='dark'] .burger-menu-navbar-btn-close svg {
+  fill: var(--text-color);
+}
+
+[data-theme='dark'] .burger-menu-header-button {
+  background: var(--accent-color);
+}
+
+[data-theme='dark'] .product-modalWindow {
+  background: var(--header-bg);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .product-modal-title,
+[data-theme='dark'] .modal-description,
+[data-theme='dark'] .modal-price,
+[data-theme='dark'] .furnitureDescription,
+[data-theme='dark'] .furnitureSize {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .order-modal {
+  background: var(--header-bg);
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .modal-title,
+[data-theme='dark'] .modal-label {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .modal-input,
+[data-theme='dark'] .modal-order-form textarea {
+  background: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+[data-theme='dark'] .modal-input::placeholder,
+[data-theme='dark'] .modal-order-form textarea::placeholder {
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
+[data-theme='dark'] .modal-window {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme='dark'] .modal-close-btn svg {
+  fill: var(--text-color);
+}
+
+[data-theme='dark'] .modal-thumb:hover {
+  box-shadow: 0 0 8px var(--accent-color);
+}
+
+[data-theme='dark'] .radio-group label {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .star {
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-text-stroke: 1px var(--text-color);
+}
+
+[data-theme='dark'] .star-full {
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .star-half {
+  background: linear-gradient(90deg, var(--text-color) 50%, rgba(255, 255, 255, 0.3) 50%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='dark'] .star-empty {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme='dark'] .color-circle {
+  border-color: var(--border-color);
+}
+
+[data-theme='dark'] .radio-group input:checked + .color-circle {
+  border-color: var(--accent-color);
+}
+
+[data-theme='dark'] .modalButton {
+  background: var(--accent-color);
+}
+
+[data-theme='dark'] .modal-submit-btn {
+  background: var(--accent-color);
+}
+
+[data-theme='dark'] .footer {
+  background-color: var(--accent-color);
+}
+
