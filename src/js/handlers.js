@@ -19,7 +19,8 @@ import {
   showLoadMoreBtn,
   showWarning,
 } from './helpers.js';
-import { openProductModal } from './modal.js';
+import { openProductModal, closeProductModal } from './product-modal.js';
+import { closeOrderModal, openOrderModal } from './order-modal.js';
 
 let currentPage = 1;
 let currentCategory = '';
@@ -155,3 +156,80 @@ export const onProductsClick = e => {
   e.preventDefault();
   openProductModal(id);
 };
+
+// ===== Глобальні колбеки =====
+
+export function handleWindowLoad() {
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  });
+}
+
+// ===== Колбеки для Burger Menu =====
+
+export function handleBurgerMenuOpen(menu, body, openMenuBtn, closeBtn) {
+  menu.classList.add('is-open');
+  body.classList.add('no-scroll');
+  openMenuBtn.style.display = 'none';
+  closeBtn.style.display = 'flex';
+}
+
+export function handleBurgerMenuClose(menu, body, openMenuBtn, closeBtn) {
+  menu.classList.remove('is-open');
+  body.classList.remove('no-scroll');
+  openMenuBtn.style.display = 'flex';
+  closeBtn.style.display = 'none';
+}
+
+export function handleBurgerMenuEscKey(e, menu, closeMenuFn) {
+  if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+    closeMenuFn();
+  }
+}
+
+// ===== Колбеки для Product Modal =====
+
+export function handleProductModalBackdrop(e) {
+  if (e.target === refs.productModal) {
+    closeProductModal();
+  }
+}
+
+export function handleProductModalEsc(e) {
+  if (e.key === 'Escape') {
+    closeProductModal();
+  }
+}
+
+export function handleProductModalOrderBtn(productId) {
+  const checked = refs.productModal.querySelector('input[name="color"]:checked');
+  const color = checked ? checked.value : null;
+  closeProductModal();
+  openOrderModal(productId, null, color);
+}
+
+export function handleProductModalThumbClick(e, mainImg) {
+  const img = e.target.closest('.modal-thumb');
+  if (!img || !mainImg) return;
+  const tmp = mainImg.src;
+  mainImg.src = img.src;
+  img.src = tmp;
+}
+
+// ===== Колбеки для Order Modal =====
+
+export function handleOrderModalEsc(e) {
+  if (e.key === 'Escape') {
+    closeOrderModal();
+  }
+}
+
+export function handleOrderModalCloseBtn() {
+  closeOrderModal();
+}
+
+export function handleOrderModalBackdrop(e) {
+  if (e.target === refs.backdropOrderModal) {
+    closeOrderModal();
+  }
+}

@@ -4,10 +4,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { getFeedbacks } from './products-api.js';
-import { renderFeedbacks } from './render-function.js';
 import { FEEDBACK_LIMIT } from './constants.js';
 import refs from './refs.js';
 import { showError, showWarning } from './helpers.js';
+import { roundRating } from './helpers';
+import Raty from 'raty-js';
 
 let feedbackSwiper = null;
 
@@ -147,4 +148,56 @@ export async function initFeedbacks() {
   }
 
   await loadFeedbacks();
+}
+
+// ===== Функції рендерингу відгуків =====
+
+// Функція для створення розмітки картки відгуку
+export function createFeedbackCardMarkup(feedback) {
+  const rating = feedback.rate ?? 0;
+  const roundedRating = roundRating(rating);
+
+  return `
+    <li class="swiper-slide feedback-card-item">
+      <div class="feedback-rating" data-score="${roundedRating}" aria-label="Рейтинг ${roundedRating} з 5"></div>
+      <p class="feedback-text">${feedback.descr || ''}</p>
+      <p class="feedback-author">${feedback.name || ''}</p>
+    </li>
+  `;
+}
+
+// Функція для рендерингу всіх відгуків
+export function renderFeedbacks(feedbacks) {
+  if (!refs.feedbackCardList) {
+    return;
+  }
+
+  const markup = feedbacks
+    .map(feedback => createFeedbackCardMarkup(feedback))
+    .join('');
+  refs.feedbackCardList.innerHTML = markup;
+
+  const ratingElements =
+    refs.feedbackCardList.querySelectorAll('.feedback-rating');
+
+  ratingElements.forEach(container => {
+    const score = Number(container.dataset.score) || 0;
+
+    container.innerHTML = '';
+
+    const ratyInstance = new Raty(container, {
+      readOnly: true,
+      starType: 'i',
+      number: 5,
+      score,
+      half: true,
+      halfShow: true,
+      starOn: 'feedback-star-on',
+      starOff: 'feedback-star-off',
+      starHalf: 'feedback-star-half',
+      space: false,
+    });
+
+    ratyInstance.init();
+  });
 }
