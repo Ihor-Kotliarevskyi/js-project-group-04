@@ -34,6 +34,14 @@ export async function getFurnituresByCategories(categoryId, currentPage) {
   return data;
 }
 
+// Popular Furnitures
+export async function getPopularFurnitures(currentPage = FURNITURE_PAGE) {
+  const { data } = await axios(
+    `${API_ENDPOINTS.FURNITURES}?page=${currentPage}&limit=${FURNITURE_LIMIT}&type=popular`
+  );
+  return data;
+}
+
 // Furniture by Id
 export async function getFurnitureByID(id) {
   const endpoint = getFurnitureByIdEndpoint(id);

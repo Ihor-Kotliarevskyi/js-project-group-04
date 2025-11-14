@@ -22,7 +22,8 @@ export function renderCategories(arrey) {
   refs.categories.innerHTML = murkup;
 }
 
-export function renderFurnitures(arrey) {
+export function renderFurnitures(arrey, targetContainer = null) {
+  const container = targetContainer || refs.products;
   const markup = arrey
     .map(
       ({
@@ -53,7 +54,7 @@ export function renderFurnitures(arrey) {
       </li>`
     )
     .join('');
-  refs.products.insertAdjacentHTML('beforeend', markup);
+  container.insertAdjacentHTML('beforeend', markup);
 }
 
 export function clearFurnitures() {

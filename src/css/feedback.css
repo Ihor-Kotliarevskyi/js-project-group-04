@@ -1,17 +1,17 @@
 .feedback {
-    width: 100%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 64px 20px;
-    background-color: #FFFFFF;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 64px 20px;
+  background-color: #ffffff;
+  box-sizing: border-box;
 }
 
 .feedback-container {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    height: auto;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: auto;
 }
 
 .feedbacks-container-title {
@@ -66,9 +66,7 @@
   width: 100%;
   min-width: 0;
   background-color: #ffffff;
-  padding: clamp(16px, 2.5vw, 24px) clamp(20px, 3vw, 32px)
-    clamp(24px, 3vw, 32px);
-  padding-left: 0 !important;
+  padding: clamp(16px, 2.5vw, 24px) clamp(20px, 3vw, 32px);
   border-radius: 8px;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -253,13 +251,13 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .feedback {
-        padding: 48px 32px;
-    }
-    .feedback-container-pagination {
-        flex-direction: row;
-        align-items: center;
-    }
+  .feedback {
+    padding: 48px 32px;
+  }
+  .feedback-container-pagination {
+    flex-direction: row;
+    align-items: center;
+  }
 
   .feedback-container-pagination {
     flex-direction: row;
@@ -272,44 +270,42 @@
 }
 
 @media only screen and (min-width: 375px) and (max-width: 767.98px) {
-    .feedback {
-        max-width: 375px;
-    }
+  .feedback {
+    max-width: 375px;
+  }
 
-    .feedback-container {
-        max-width: 100%;
-    }
+  .feedback-container {
+    max-width: 100%;
+  }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1439.98px) {
-    .feedback {
-        max-width: 768px;
-        padding: 48px 32px;
-    }
-    .feedbacks-container-title {
-        margin-bottom: 48px;
-    }
-    .feedback-card-item {
-        padding: 32px;
-    }
-    .feedback-container-pagination {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: clamp(12px, 2vw, 16px);
-    }
+  .feedback {
+    max-width: 768px;
+    padding: 48px 32px;
+  }
+  .feedbacks-container-title {
+    margin-bottom: 48px;
+  }
+  .feedback-card-item {
+    padding: 32px;
+  }
+  .feedback-container-pagination {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(12px, 2vw, 16px);
+  }
 
-    .feedback-navigation {
-        width: auto;
-        justify-content: center;
-    }
+  .feedback-navigation {
+    width: auto;
+    justify-content: center;
+  }
 }
 
 /* Desktop style */
 @media only screen and (min-width: 1440px) {
-    .feedback {
-        padding: 80px 64px;
-    }
+  .feedback {
+    padding: 80px 64px;
+  }
 }
-
-

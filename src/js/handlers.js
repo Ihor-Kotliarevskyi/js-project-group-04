@@ -7,6 +7,7 @@ import {
   getFurnitures,
   getCategories,
   getFurnituresByCategories,
+  getPopularFurnitures,
 } from './products-api.js';
 import { FURNITURE_LIMIT } from './constants.js';
 import refs from './refs.js';
@@ -21,6 +22,7 @@ import {
 } from './helpers.js';
 import { openProductModal, closeProductModal } from './product-modal.js';
 import { closeOrderModal, openOrderModal } from './order-modal.js';
+import { initPopularPagination } from './popular-furniture.js';
 
 let currentPage = 1;
 let currentCategory = '';
@@ -38,6 +40,12 @@ export async function initialHome() {
     const { furnitures } = await getFurnitures();
     renderFurnitures(furnitures);
     showLoadMoreBtn();
+
+    // Завантажуємо популярні товари
+    const { furnitures: popularFurnitures } = await getPopularFurnitures();
+    if (popularFurnitures && popularFurnitures.length > 0) {
+      initPopularPagination(popularFurnitures);
+    }
   } catch (error) {
     showError(error);
   } finally {
@@ -202,7 +210,9 @@ export function handleProductModalEsc(e) {
 }
 
 export function handleProductModalOrderBtn(productId) {
-  const checked = refs.productModal.querySelector('input[name="color"]:checked');
+  const checked = refs.productModal.querySelector(
+    'input[name="color"]:checked'
+  );
   const color = checked ? checked.value : null;
   closeProductModal();
   openOrderModal(productId, null, color);

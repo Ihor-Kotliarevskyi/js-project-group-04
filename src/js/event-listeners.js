@@ -18,7 +18,11 @@ import {
 } from './handlers';
 import { initFeedbacks } from './feedback';
 import { closeProductModal } from './product-modal';
-import { closeOrderModal, handleOrderFormSubmit, setupOrderFormStorage } from './order-modal';
+import {
+  closeOrderModal,
+  handleOrderFormSubmit,
+  setupOrderFormStorage,
+} from './order-modal';
 import { initTheme, toggleTheme } from './theme';
 
 // ===== Глобальні слухачі =====
@@ -63,6 +67,14 @@ function initProductsListeners() {
     productsEl.addEventListener('click', onProductsClick);
     productsEl.dataset.boundModal = '1';
   }
+
+  // Слухачі для популярних товарів
+  const popularProductsEl =
+    refs.popularProducts || document.getElementById('popular-products');
+  if (popularProductsEl && popularProductsEl.dataset.boundModal !== '1') {
+    popularProductsEl.addEventListener('click', onProductsClick);
+    popularProductsEl.dataset.boundModal = '1';
+  }
 }
 
 // ===== Слухачі для Burger Menu =====
@@ -82,15 +94,19 @@ function initBurgerMenu() {
   closeBtn.classList.add('burger-menu-navbar-btn-close');
   closeBtn.setAttribute('type', 'button');
   closeBtn.setAttribute('data-navbar-close', '');
-  
+
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.classList.add('burger-button-icon');
   svg.setAttribute('width', '32');
   svg.setAttribute('height', '32');
-  
+
   const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '/img/sprite.svg#x');
-  
+  use.setAttributeNS(
+    'http://www.w3.org/1999/xlink',
+    'href',
+    '/img/sprite.svg#x'
+  );
+
   svg.appendChild(use);
   closeBtn.appendChild(svg);
 
@@ -164,7 +180,10 @@ export function removeProductModalListeners() {
   }
 
   if (productModalBackdropHandler) {
-    refs.productModal.removeEventListener('mousedown', productModalBackdropHandler);
+    refs.productModal.removeEventListener(
+      'mousedown',
+      productModalBackdropHandler
+    );
     productModalBackdropHandler = null;
   }
 }
@@ -191,7 +210,10 @@ function initOrderModalStaticListeners() {
   refs.closeOrderBtn?.addEventListener('click', handleOrderModalCloseBtn);
 
   // Закриття по кліку на backdrop
-  refs.backdropOrderModal?.addEventListener('mousedown', handleOrderModalBackdrop);
+  refs.backdropOrderModal?.addEventListener(
+    'mousedown',
+    handleOrderModalBackdrop
+  );
 }
 
 // ===== Слухачі для форми замовлення =====
@@ -207,4 +229,3 @@ function initOrderFormListeners() {
 function initThemeToggle() {
   refs.themeToggle?.addEventListener('click', toggleTheme);
 }
-
