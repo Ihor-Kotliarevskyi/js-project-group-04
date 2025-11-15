@@ -61,6 +61,15 @@ html {
   width: 100%;
 }
 
+/* Style for popular products link in footer */
+.footer-nav-link--popular {
+  /* Keep link visual consistent with neighbors — accent by weight only */
+  font-weight: 500;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
 .footer-nav-link:focus::after {
   width: 100%;
 }

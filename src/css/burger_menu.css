@@ -130,6 +130,11 @@
   line-height: 29px;
 }
 
+/* style popular link in burger menu */
+.nav-link--popular {
+  color: var(--accent-color);
+}
+
 .burger-menu-header-button {
   padding: 8px 20px;
   border-radius: 100px;
