@@ -21,7 +21,7 @@
     <script type="module" crossorigin src="/js-project-group-04/index.js"></script>
     <link rel="modulepreload" crossorigin href="/js-project-group-04/assets/vendor-lXkXHKPV.js">
     <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/vendor-hD2YyXDv.css">
-    <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/index-CtUIoRtl.css">
+    <link rel="stylesheet" crossorigin href="/js-project-group-04/assets/index-DRri_No4.css">
   </head>
   <body>
     <header class="header">
@@ -36,6 +36,11 @@
         <ul class="nav-list hidden-element">
           <li class="nav-list-item">
             <a href="#furniture-list" class="nav-link">Наші меблі</a>
+          </li>
+          <li class="nav-list-item nav-list-item--popular">
+            <a href="#popular-furniture" class="nav-link nav-link--popular"
+              >Популярні товари</a
+            >
           </li>
           <li class="nav-list-item">
             <a href="#about-us" class="nav-link">Про нас</a>
@@ -55,13 +60,50 @@
           До покупок
         </button>
       </div>
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Переключити тему">
-        <svg class="theme-toggle-icon theme-icon-sun" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/>
-          <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <button
+        type="button"
+        class="theme-toggle"
+        data-theme-toggle
+        aria-label="Переключити тему"
+      >
+        <svg
+          class="theme-toggle-icon theme-icon-sun"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="12"
+            cy="12"
+            r="5"
+            stroke="currentColor"
+            stroke-width="2"
+          />
+          <path
+            d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
         </svg>
-        <svg class="theme-toggle-icon theme-icon-moon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: none;">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg
+          class="theme-toggle-icon theme-icon-moon"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="display: none"
+        >
+          <path
+            d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
         </svg>
       </button>
       <button type="button" class="burger-button" data-menu-open>
@@ -79,6 +121,11 @@
       <ul class="burger-menu-nav-list">
         <li class="nav-list-item">
           <a href="#furniture-list" class="nav-link">Наші меблі</a>
+        </li>
+        <li class="nav-list-item">
+          <a href="#popular-furniture" class="nav-link nav-link--popular"
+            >Популярні товари</a
+          >
         </li>
         <li class="nav-list-item">
           <a href="#about-us" class="nav-link">Про нас</a>
@@ -431,6 +478,11 @@
     <p class="footer-descr">© 2025 Relume. Всі права захищені.</p>
     <nav class="footer-nav">
       <a class="footer-nav-link" href="#furniture-list">Наші меблі</a>
+      <a
+        class="footer-nav-link footer-nav-link--popular"
+        href="#popular-furniture"
+        >Популярні товари</a
+      >
       <a class="footer-nav-link" href="#about-us">Про нас</a>
       <a class="footer-nav-link" href="#faq-section">Часті питання</a>
       <a class="footer-nav-link" href="#feedbacks-section-id">Відгуки</a>
